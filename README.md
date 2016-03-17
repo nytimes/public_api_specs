@@ -1,5 +1,5 @@
 # api_specs
-The API Specs (in OpenAPI format, formerly Swagger) for the APIs available from [developer.nytimes.com](developer.nytimes.com)
+The API Specs (in OpenAPI format, formerly Swagger) for the APIs available from [developer.nytimes.com](http://developer.nytimes.com)
 
 Learn more about OpenAPI [here](https://openapis.org/)
 
