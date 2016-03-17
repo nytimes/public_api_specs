@@ -1,1 +1,208 @@
-{"swagger":"2.0","info":{"title":"Event Listings API","description":"With the Event Listings API, you can search the New York Times listing of noteworthy cultural events in New York City and beyond.","version":"1.0.0"},"host":"api.nytimes.com","schemes":["http","https"],"basePath":"/svc/events/v2/","produces":["application/json"],"security":[{"apikey":[]}],"paths":{"/listings.json":{"get":{"summary":"Top Stories","description":"The Top Stories API provides JSON and JSONP lists of articles and associated images by section.\n","parameters":[{"name":"ll","in":"query","description":"Limits the results to events within radius distance of the specified latitude and longitude coordinates. <br/><br/>\nFor example, the following parameter would use The New York Times Building as the center of the search, `ll=40.756146,-73.99021`\n","required":false,"type":"string"},{"name":"radius","in":"query","description":"Sets the radius of a spatial search (in meters).\n","required":false,"type":"integer","default":1000},{"name":"ne","in":"query","description":"Along with sw, forms a bounded box using the longitude and latitude coordinates specified as the northeast corner. The search results are limited to the resulting box. <br/><br/> Two float values, separated by a comma `latitude,longitude`","required":false,"type":"string"},{"name":"sw","in":"query","description":"Along with ne, forms a bounded box using the longitude and latitude coordinates specified as the southwest corner. The search results are limited to the resulting box. Two float values, separated by a comma `latitude,longitude` <br/> The ne parameter is required to use this parameter.","type":"string","required":false},{"name":"query","in":"query","description":"Search keywords to perform a text search on the fields: web_description, event_name and venue_name. 'AND' searches can be performed by wrapping query terms in quotes. If you do not specify a query, all results will be returned.\n","type":"string","required":false},{"name":"filter","in":"query","description":"Filters search results based on the facets provided.  For more information on the values you can filter on, see Facets.\n","type":"string","required":false},{"name":"date_range","in":"query","description":"Start date to end date in the following format- YYYY-MM-DD:YYYY-MM-DD","type":"string","required":false},{"name":"facets","in":"query","description":"When facets is set to 1, a count of all facets will be included in the response.","type":"integer","default":0,"enum":[0,1]},{"name":"sort","in":"query","description":"Sorts your results on the fields specified. <br/> `sort_value1+[asc | desc],sort_value2+[asc|desc],[...]`<br/> Appending +asc to a facet or response will sort results on that value in ascending order. Appending +desc to a facet or response  will sort results in descending order. You can sort on multiple fields. You can sort on any facet. For the list of responses you can sort on, see the Sortable Field column in the Response table. <br/><br/>If you are doing a spatial search with the ll parameter, you can also sort by the distance from the center of the search: dist+[asc | desc] <br/> **Note:** either +asc or +desc is required when using the sort parameter.\n","type":"string"},{"name":"limit","in":"query","description":"Limits the number of results returned","type":"integer","default":20},{"name":"offset","in":"query","description":"Sets the starting point of the result set","type":"integer","default":0}],"tags":["Events"],"responses":{"200":{"description":"An array of events","schema":{"type":"object","properties":{"results":{"type":"array","items":{"$ref":"#/definitions/Event"}}}}}}}}},"definitions":{"Event":{"type":"object","properties":{"event_id":{"type":"integer"},"event_schedule_id":{"type":"integer"},"last_modified":{"type":"string"},"event_name":{"type":"string"},"event_detail_url":{"type":"string"},"web_description":{"type":"string"},"city":{"type":"string"},"state":{"type":"string"},"film_rating":{"type":"boolean"},"critic_name":{"type":"string"},"times_pick":{"type":"boolean"},"free":{"type":"boolean"},"kid_friendly":{"type":"boolean"},"last_chance":{"type":"boolean"},"festival":{"type":"boolean"},"long_running_show":{"type":"boolean"},"previews_and_openings":{"type":"boolean"},"recurring_start_date":{"type":"string"},"recur_days":{"type":"array","items":{"type":"string"}}}}},"securityDefinitions":{"apikey":{"type":"apiKey","name":"api-key","in":"query"}}}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Event Listings API",
+    "description": "With the Event Listings API, you can search the New York Times listing of noteworthy cultural events in New York City and beyond.",
+    "version": "1.0.0"
+  },
+  "host": "api.nytimes.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "\/svc\/events\/v2\/",
+  "produces": [
+    "application\/json"
+  ],
+  "security": [
+    {
+      "apikey": [
+        
+      ]
+    }
+  ],
+  "paths": {
+    "\/listings.json": {
+      "get": {
+        "summary": "Top Stories",
+        "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.\n",
+        "parameters": [
+          {
+            "name": "ll",
+            "in": "query",
+            "description": "Limits the results to events within radius distance of the specified latitude and longitude coordinates. <br\/><br\/>\nFor example, the following parameter would use The New York Times Building as the center of the search, `ll=40.756146,-73.99021`\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Sets the radius of a spatial search (in meters).\n",
+            "required": false,
+            "type": "integer",
+            "default": 1000
+          },
+          {
+            "name": "ne",
+            "in": "query",
+            "description": "Along with sw, forms a bounded box using the longitude and latitude coordinates specified as the northeast corner. The search results are limited to the resulting box. <br\/><br\/> Two float values, separated by a comma `latitude,longitude`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sw",
+            "in": "query",
+            "description": "Along with ne, forms a bounded box using the longitude and latitude coordinates specified as the southwest corner. The search results are limited to the resulting box. Two float values, separated by a comma `latitude,longitude` <br\/> The ne parameter is required to use this parameter.",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search keywords to perform a text search on the fields: web_description, event_name and venue_name. 'AND' searches can be performed by wrapping query terms in quotes. If you do not specify a query, all results will be returned.\n",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filters search results based on the facets provided.  For more information on the values you can filter on, see Facets.\n",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "date_range",
+            "in": "query",
+            "description": "Start date to end date in the following format- YYYY-MM-DD:YYYY-MM-DD",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "facets",
+            "in": "query",
+            "description": "When facets is set to 1, a count of all facets will be included in the response.",
+            "type": "integer",
+            "default": 0,
+            "enum": [
+              0,
+              1
+            ]
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorts your results on the fields specified. <br\/> `sort_value1+[asc | desc],sort_value2+[asc|desc],[...]`<br\/> Appending +asc to a facet or response will sort results on that value in ascending order. Appending +desc to a facet or response  will sort results in descending order. You can sort on multiple fields. You can sort on any facet. For the list of responses you can sort on, see the Sortable Field column in the Response table. <br\/><br\/>If you are doing a spatial search with the ll parameter, you can also sort by the distance from the center of the search: dist+[asc | desc] <br\/> **Note:** either +asc or +desc is required when using the sort parameter.\n",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limits the number of results returned",
+            "type": "integer",
+            "default": 20
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Sets the starting point of the result set",
+            "type": "integer",
+            "default": 0
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of events",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Event"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Event": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "integer"
+        },
+        "event_schedule_id": {
+          "type": "integer"
+        },
+        "last_modified": {
+          "type": "string"
+        },
+        "event_name": {
+          "type": "string"
+        },
+        "event_detail_url": {
+          "type": "string"
+        },
+        "web_description": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "film_rating": {
+          "type": "boolean"
+        },
+        "critic_name": {
+          "type": "string"
+        },
+        "times_pick": {
+          "type": "boolean"
+        },
+        "free": {
+          "type": "boolean"
+        },
+        "kid_friendly": {
+          "type": "boolean"
+        },
+        "last_chance": {
+          "type": "boolean"
+        },
+        "festival": {
+          "type": "boolean"
+        },
+        "long_running_show": {
+          "type": "boolean"
+        },
+        "previews_and_openings": {
+          "type": "boolean"
+        },
+        "recurring_start_date": {
+          "type": "string"
+        },
+        "recur_days": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "query"
+    }
+  }
+}

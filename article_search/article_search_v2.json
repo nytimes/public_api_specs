@@ -1,1 +1,305 @@
-{"swagger":"2.0","info":{"title":"Article Search API","description":"With the Article Search API, you can search New York Times articles from Sept. 18, 1851 to today, retrieving headlines, abstracts, lead paragraphs, links to associated multimedia and other article metadata.  \n\n Note: In URI examples and field names, italics indicate placeholders for variables or values. Brackets [ ] indicate optional items. Parentheses ( ) are not a convention — when URIs include parentheses, interpret them literally.","version":"1.0.0"},"host":"api.nytimes.com","schemes":["http","https"],"basePath":"/svc/search/v2","produces":["application/json"],"security":[{"apikey":[]}],"paths":{"/articlesearch.{format}":{"get":{"summary":"Article Search","description":"Article Search requests use the following URI structure:\n","parameters":[{"name":"format","in":"path","description":"JSON (.json), JSONP (.jsonp)","required":true,"type":"string","enum":["json","jsonp"]},{"name":"q","in":"query","description":"Search query term. Search is performed on the article body, headline and byline.\n","required":false,"type":"string"},{"name":"fq","in":"query","description":"\"Filtered search query using standard Lucene syntax. \n\nThe filter query can be specified with or without a limiting field: label. \n\nSee Filtering Your Search for more information about filtering.\"\n","required":false,"type":"string"},{"name":"begin_date","in":"query","description":"\"Format: YYYYMMDD \n\nRestricts responses to results with publication dates of the date specified or later.\"\n","required":false,"type":"string"},{"name":"end_date","in":"query","description":"\"Format: YYYYMMDD \n\nRestricts responses to results with publication dates of the date specified or earlier.\"\n","required":false,"type":"string"},{"name":"sort","in":"query","description":"\"By default, search results are sorted by their relevance to the query term (q). Use the sort parameter to sort by pub_date.\"\n","required":false,"type":"string","enum":["newest","oldest"]},{"name":"fl","in":"query","description":"\"Comma-delimited list of fields (no limit)\n\n  Limits the fields returned in your search results. By default (unless you include an fl list in your request), the following fields are returned: \n  \n  web_url\n  \n  snippet\n  \n  lead_paragraph\n  \n  abstract\n  \n  print_page\n  \n  blog\n  \n  source\n  \n  multimedia\n  \n  headline\n  \n  keywords\n  \n  pub_date\n  \n  document_type\n  \n  news_desk\n  \n  byline\n  \n  type_of_material\n  \n  _id\n  \n  word_count\"\n","required":false,"type":"string"},{"name":"hl","in":"query","description":"Enables highlighting in search results. When set to true, the query term (q) is highlighted in the headline and lead_paragraph fields.\n\nNote: If highlighting is enabled, snippet will be returned even if it is not specified in your fl list.\"\n","required":false,"type":"boolean","default":false},{"name":"page","in":"query","description":"\"The value of page corresponds to a set of 10 results (it does not indicate the starting number of the result set). For example, page=0 corresponds to records 0-9. To return records 10-19, set page to 1, not 10.\"\n","required":false,"type":"integer","default":0,"maximum":10,"minimum":0},{"name":"facet_field","in":"query","description":"Comma-delimited list of facets\n\nSpecifies the sets of facet values to include in the facets array at the end of response, which collects the facet values from all the search results. By default no facet fields will be returned. Below is the list of valid facets:\n\nsection_name\n\ndocument_type\n\ntype_of_material\n\nsource\n\nday_of_week\n\nTo learn more about using facets, see Using Facets.\n","required":false,"type":"string"},{"name":"facet_filter","in":"query","description":"When set to true, facet counts will respect any applied filters (fq, date range, etc.) in addition to the main query term. To filter facet counts, specifying at least one facet_field is required. To learn more about using facets, see Using Facets.\n","required":false,"type":"boolean","default":false},{"name":"callback","in":"query","description":"The name of the function the API call results will be passed to. Required when using JSONP. This parameter has only one valid value: callback=svc_search_v2_articlesearch\n","required":false,"type":"string","enum":["svc_search_v2_articlesearch"]}],"tags":["Stories"],"responses":{"200":{"description":"The docs requested by the article search.","schema":{"type":"object","properties":{"response":{"type":"object","properties":{"docs":{"type":"array","items":{"$ref":"#/definitions/Doc"}},"meta":{"type":"object","properties":{"hits":{"type":"integer"},"time":{"type":"integer"},"offset":{"type":"integer"}}}}}}}}}}}},"definitions":{"Doc":{"type":"object","properties":{"web_url":{"type":"string"},"snippet":{"type":"string"},"lead_paragraph":{"type":"string"},"abstract":{"type":"string"},"print_page":{"type":"string"},"blog":{"type":"array"},"source":{"type":"string"},"headline":{"type":"object","properties":{"main":{"type":"string"},"kicker":{"type":"string"}}},"keywords":{"type":"object","properties":{"rank":{"type":"string"},"name":{"type":"string"},"value":{"type":"string"}}},"pub_date":{"type":"string"},"document_type":{"type":"string"},"news_desK":{"type":"string"},"section_name":{"type":"string"},"subsection_name":{"type":"string"},"byline":{"type":"object","properties":{"organization":{"type":"string"},"original":{"type":"string"},"person":{"type":"array"}}},"type_of_material":{"type":"string"},"_id":{"type":"string"},"word_count":{"type":"string"},"slideshow_credits":{"type":"string"},"multimedia":{"type":"array","items":{"type":"object","properties":{"url":{"type":"string"},"format":{"type":"string"},"height":{"type":"integer"},"width":{"type":"integer"},"type":{"type":"string"},"subtype":{"type":"string"},"caption":{"type":"string"},"copyright":{"type":"string"}}}}}}},"securityDefinitions":{"apikey":{"type":"apiKey","name":"api-key","in":"query"}}}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Article Search API",
+    "description": "With the Article Search API, you can search New York Times articles from Sept. 18, 1851 to today, retrieving headlines, abstracts, lead paragraphs, links to associated multimedia and other article metadata.  \n\n Note: In URI examples and field names, italics indicate placeholders for variables or values. Brackets [ ] indicate optional items. Parentheses ( ) are not a convention \u2014 when URIs include parentheses, interpret them literally.",
+    "version": "1.0.0"
+  },
+  "host": "api.nytimes.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "\/svc\/search\/v2",
+  "produces": [
+    "application\/json"
+  ],
+  "security": [
+    {
+      "apikey": [
+        
+      ]
+    }
+  ],
+  "paths": {
+    "\/articlesearch.{format}": {
+      "get": {
+        "summary": "Article Search",
+        "description": "Article Search requests use the following URI structure:\n",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "JSON (.json), JSONP (.jsonp)",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "json",
+              "jsonp"
+            ]
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query term. Search is performed on the article body, headline and byline.\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fq",
+            "in": "query",
+            "description": "\"Filtered search query using standard Lucene syntax. \n\nThe filter query can be specified with or without a limiting field: label. \n\nSee Filtering Your Search for more information about filtering.\"\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_date",
+            "in": "query",
+            "description": "\"Format: YYYYMMDD \n\nRestricts responses to results with publication dates of the date specified or later.\"\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "\"Format: YYYYMMDD \n\nRestricts responses to results with publication dates of the date specified or earlier.\"\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "\"By default, search results are sorted by their relevance to the query term (q). Use the sort parameter to sort by pub_date.\"\n",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "newest",
+              "oldest"
+            ]
+          },
+          {
+            "name": "fl",
+            "in": "query",
+            "description": "\"Comma-delimited list of fields (no limit)\n\n  Limits the fields returned in your search results. By default (unless you include an fl list in your request), the following fields are returned: \n  \n  web_url\n  \n  snippet\n  \n  lead_paragraph\n  \n  abstract\n  \n  print_page\n  \n  blog\n  \n  source\n  \n  multimedia\n  \n  headline\n  \n  keywords\n  \n  pub_date\n  \n  document_type\n  \n  news_desk\n  \n  byline\n  \n  type_of_material\n  \n  _id\n  \n  word_count\"\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hl",
+            "in": "query",
+            "description": "Enables highlighting in search results. When set to true, the query term (q) is highlighted in the headline and lead_paragraph fields.\n\nNote: If highlighting is enabled, snippet will be returned even if it is not specified in your fl list.\"\n",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "\"The value of page corresponds to a set of 10 results (it does not indicate the starting number of the result set). For example, page=0 corresponds to records 0-9. To return records 10-19, set page to 1, not 10.\"\n",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "maximum": 10,
+            "minimum": 0
+          },
+          {
+            "name": "facet_field",
+            "in": "query",
+            "description": "Comma-delimited list of facets\n\nSpecifies the sets of facet values to include in the facets array at the end of response, which collects the facet values from all the search results. By default no facet fields will be returned. Below is the list of valid facets:\n\nsection_name\n\ndocument_type\n\ntype_of_material\n\nsource\n\nday_of_week\n\nTo learn more about using facets, see Using Facets.\n",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "facet_filter",
+            "in": "query",
+            "description": "When set to true, facet counts will respect any applied filters (fq, date range, etc.) in addition to the main query term. To filter facet counts, specifying at least one facet_field is required. To learn more about using facets, see Using Facets.\n",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "The name of the function the API call results will be passed to. Required when using JSONP. This parameter has only one valid value: callback=svc_search_v2_articlesearch\n",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "svc_search_v2_articlesearch"
+            ]
+          }
+        ],
+        "tags": [
+          "Stories"
+        ],
+        "responses": {
+          "200": {
+            "description": "The docs requested by the article search.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/definitions\/Doc"
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "hits": {
+                          "type": "integer"
+                        },
+                        "time": {
+                          "type": "integer"
+                        },
+                        "offset": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Doc": {
+      "type": "object",
+      "properties": {
+        "web_url": {
+          "type": "string"
+        },
+        "snippet": {
+          "type": "string"
+        },
+        "lead_paragraph": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "print_page": {
+          "type": "string"
+        },
+        "blog": {
+          "type": "array"
+        },
+        "source": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "string"
+            },
+            "kicker": {
+              "type": "string"
+            }
+          }
+        },
+        "keywords": {
+          "type": "object",
+          "properties": {
+            "rank": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "pub_date": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "news_desK": {
+          "type": "string"
+        },
+        "section_name": {
+          "type": "string"
+        },
+        "subsection_name": {
+          "type": "string"
+        },
+        "byline": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "original": {
+              "type": "string"
+            },
+            "person": {
+              "type": "array"
+            }
+          }
+        },
+        "type_of_material": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "word_count": {
+          "type": "string"
+        },
+        "slideshow_credits": {
+          "type": "string"
+        },
+        "multimedia": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subtype": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "copyright": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "query"
+    }
+  }
+}

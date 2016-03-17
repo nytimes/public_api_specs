@@ -1,1 +1,335 @@
-{"swagger":"2.0","info":{"title":"The Times Newswire API","description":"With the Times Newswire API, you can get links and metadata for Times articles and blog posts as soon as they are published on NYTimes.com. The Times Newswire API provides an up-to-the-minute stream of published items.","version":"3.0.0"},"host":"api.nytimes.com","schemes":["http","https"],"basePath":"/svc/news/v3/content","produces":["application/json"],"security":[{"apikey":[]}],"paths":{"/{source}/{section}.json":{"get":{"parameters":[{"name":"source","in":"path","description":"Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n","type":"string","enum":["all","nyt","iht"],"required":true},{"name":"section","in":"path","description":"Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n","required":true,"type":"string"},{"name":"limit","in":"query","description":"Limits the number of results, between 1 and 20","default":20,"required":false,"type":"integer"},{"name":"offset","in":"query","description":"Sets the starting point of the result set","required":false,"default":0,"type":"integer"}],"responses":{"200":{"description":"An array of Articles","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Article"}}}}}}}},"/{source}/{section}/{time-period}.json":{"get":{"parameters":[{"name":"source","in":"path","description":"Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n","type":"string","enum":["all","nyt","iht"],"required":true},{"name":"section","in":"path","description":"Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n","required":true,"type":"string"},{"name":"time-period","in":"path","description":"Limits the set of items by time published, integer in number of hours","type":"integer","required":true},{"name":"limit","in":"query","description":"Limits the number of results, between 1 and 20","default":20,"required":false,"type":"integer"},{"name":"offset","in":"query","description":"Sets the starting point of the result set","required":false,"default":0,"type":"integer"}],"responses":{"200":{"description":"An array of Articles","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Article"}}}}}}}},"/content.json":{"get":{"parameters":[{"name":"url","in":"query","type":"string","description":"The complete URL of a specific news item, URL-encoded or backslash-escaped","required":true}],"responses":{"200":{"description":"An array of Articles","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Article"}}}}}}}}},"definitions":{"Article":{"type":"object","properties":{"section":{"type":"string"},"subsection":{"type":"string"},"title":{"type":"string"},"abstract":{"type":"string"},"url":{"type":"string"},"short_url":{"type":"string"},"byline":{"type":"string"},"thumbnail_standard":{"type":"string"},"item_type":{"type":"string"},"source":{"type":"string"},"updated_date":{"type":"string"},"created_date":{"type":"string"},"published_date":{"type":"string"},"material_type_facet":{"type":"string"},"kicker":{"type":"string"},"headline":{"type":"string"},"des_facet":{"type":"array","items":{"type":"string"}},"org_facet":{"type":"string"},"per_facet":{"type":"array","items":{"type":"string"}},"geo_facet":{"type":"array","items":{"type":"string"}},"blog_name":{"type":"string"},"related_urls":{"type":"array","items":{"type":"object","properties":{"suggested_link_text":{"type":"string"},"url":{"type":"string"}}}},"multimedia":{"type":"array","items":{"type":"object","properties":{"url":{"type":"string"},"format":{"type":"string"},"height":{"type":"integer"},"width":{"type":"integer"},"type":{"type":"string"},"subtype":{"type":"string"},"caption":{"type":"string"},"copyright":{"type":"string"}}}}}}},"securityDefinitions":{"apikey":{"type":"apiKey","name":"api-key","in":"query"}}}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "The Times Newswire API",
+    "description": "With the Times Newswire API, you can get links and metadata for Times articles and blog posts as soon as they are published on NYTimes.com. The Times Newswire API provides an up-to-the-minute stream of published items.",
+    "version": "3.0.0"
+  },
+  "host": "api.nytimes.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "\/svc\/news\/v3\/content",
+  "produces": [
+    "application\/json"
+  ],
+  "security": [
+    {
+      "apikey": [
+        
+      ]
+    }
+  ],
+  "paths": {
+    "\/{source}\/{section}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "description": "Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n",
+            "type": "string",
+            "enum": [
+              "all",
+              "nyt",
+              "iht"
+            ],
+            "required": true
+          },
+          {
+            "name": "section",
+            "in": "path",
+            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http:\/\/api.nytimes.com\/svc\/news\/v3\/content\/section-list.json\n",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limits the number of results, between 1 and 20",
+            "default": 20,
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Sets the starting point of the result set",
+            "required": false,
+            "default": 0,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Articles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/{source}\/{section}\/{time-period}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "description": "Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n",
+            "type": "string",
+            "enum": [
+              "all",
+              "nyt",
+              "iht"
+            ],
+            "required": true
+          },
+          {
+            "name": "section",
+            "in": "path",
+            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http:\/\/api.nytimes.com\/svc\/news\/v3\/content\/section-list.json\n",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "time-period",
+            "in": "path",
+            "description": "Limits the set of items by time published, integer in number of hours",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limits the number of results, between 1 and 20",
+            "default": 20,
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Sets the starting point of the result set",
+            "required": false,
+            "default": 0,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Articles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/content.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "type": "string",
+            "description": "The complete URL of a specific news item, URL-encoded or backslash-escaped",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Articles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Article": {
+      "type": "object",
+      "properties": {
+        "section": {
+          "type": "string"
+        },
+        "subsection": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "short_url": {
+          "type": "string"
+        },
+        "byline": {
+          "type": "string"
+        },
+        "thumbnail_standard": {
+          "type": "string"
+        },
+        "item_type": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "updated_date": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "published_date": {
+          "type": "string"
+        },
+        "material_type_facet": {
+          "type": "string"
+        },
+        "kicker": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "des_facet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "org_facet": {
+          "type": "string"
+        },
+        "per_facet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "geo_facet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blog_name": {
+          "type": "string"
+        },
+        "related_urls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "suggested_link_text": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "multimedia": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subtype": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "copyright": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "query"
+    }
+  }
+}

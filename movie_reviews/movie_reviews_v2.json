@@ -1,1 +1,449 @@
-{"swagger":"2.0","info":{"title":"The Movie Reviews API","description":"With the Movie Reviews API, you can search New York Times movie reviews by keyword and get lists of NYT Critics' Picks.","version":"2.0.0"},"host":"api.nytimes.com","schemes":["http","https"],"basePath":"/svc/movies/v2/","produces":["application/json"],"security":[{"apikey":[]}],"paths":{"/reviews/{resource-type}.json":{"get":{"parameters":[{"name":"resource-type","in":"path","description":"Specify all to retrieve all reviews, including NYT Critics' Picks, and covering movies currently in theaters as well as movies on DVD.\n\nSpecify picks to get NYT Critics' Picks currently in theaters.\n\nSpecify dvd-picks to get NYT Critics' Picks on DVD.\n","type":"string","enum":["all","picks","dvd-picks"],"required":true},{"name":"offset","in":"query","description":"Positive integer, multiple of 20","type":"integer","required":false,"default":20},{"name":"order","in":"query","description":"Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n","type":"string","required":false,"default":"by-publication-date","enum":["by-title","by-publication-date","by-opening-date","by-dvd-release-date"]}],"responses":{"200":{"description":"An array of Movies","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Movie"}}}}}}}},"/reviews/search.json":{"get":{"parameters":[{"name":"query","in":"query","description":"Search keywords; matches movie title and indexed terms\n\nTo limit your search to exact matches only, surround your search string with single quotation marks (e.g., query='28+days+later'). Otherwise, responses will include partial matches (\"head words\") as well as exact matches (e.g., president will match president, presidents and presidential).\n  \n  If you specify multiple terms without quotation marks, they will be combined in an OR search.\n  \n  If you omit the query parameter, your request will be equivalent to a reviews and NYT Critics' Picks request (for example, reviews/search.json?dvd=Y is equivalent to reviews/dvd-picks.json).\n","type":"string","required":false},{"name":"critics-pick","in":"query","description":"Set this parameter to Y to limit the results to NYT Critics' Picks. To get only those movies that have not been highlighted by Times critics, specify critics-pick=N. (To get all reviews regardless of critics-pick status, simply omit this parameter.)\n","type":"string","enum":["Y","N"]},{"name":"thousand-best","in":"query","description":"Set this parameter to Y to limit the results to movies on the Times list of The Best 1,000 Movies Ever Made. To get only those movies that are not on the list, specify thousand-best=N. (To get all reviews regardless of thousand-best status, simply omit this parameter.)\n","type":"string","enum":["Y","N"]},{"name":"dvd","in":"query","description":"Set this parameter to Y to limit the results to movies that have been released on DVD. To get only those movies that have not been released on DVD, specify dvd=N. (To get all reviews regardless of format, simply omit this parameter.)\n","type":"string","enum":["Y","N"]},{"name":"reviewer","in":"query","type":"string","description":"Include this parameter to limit your results to reviews by a specific critic. Reviewer names should be hyphenated or concatenated with dots (e.g., manohla-dargis or manohla.dargis).\n"},{"name":"publication-date","in":"query","type":"string","description":"Single date: YYYY-MM-DD\n\nStart and end date: YYYY-MM-DD;YYYY-MM-DD\n\nThe publication-date is the date the review was first published in The Times.\n"},{"name":"opening-date","in":"query","type":"string","description":"Single date: YYYY-MM-DD\n\nStart and end date: YYYY-MM-DD;YYYY-MM-DD\n\nThe opening-date is the date the movie's opening date in the New York region.\n","required":false},{"name":"offset","in":"query","description":"Positive integer, multiple of 20","type":"integer","required":false,"default":20},{"name":"order","in":"query","description":"Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n","type":"string"}],"responses":{"200":{"description":"An array of Movies","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Movie"}}}}}}}},"/reviews/reviewer/{reviewer-name}.json":{"get":{"parameters":[{"name":"reviewer-name","in":"path","type":"string","description":"Reviewer names should be hyphenated or concatenated with dots (e.g., manohla-dargis or manohla.dargis).","required":true},{"name":"critics-pick","in":"query","description":"Set this parameter to Y to limit the results to NYT Critics' Picks. To get only those movies that have not been highlighted by Times critics, specify critics-pick=N. (To get all reviews regardless of critics-pick status, simply omit this parameter.)\n","type":"string","enum":["Y","N"]},{"name":"offset","in":"query","description":"Positive integer, multiple of 20","type":"integer","required":false,"default":20},{"name":"order","in":"query","description":"Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n","type":"string"}],"responses":{"200":{"description":"An array of Movies","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Movie"}}}}}}}},"/critics/{resource-type}.json":{"get":{"parameters":[{"name":"resource-type","in":"path","description":"all | full-time | part-time | reviewer | [reviewer-name]\n\nSpecify all to get all Times reviewers, or specify full-time or part-time to get that subset. Specify a reviewer's name to get details about a particular reviewer.\n\nReviewer names should be hyphenated or concatenated with dots (e.g., a-o-scott or a.o.scott).\n","required":true,"type":"string"}],"responses":{"200":{"description":"An array of Movie Critics","schema":{"type":"object","properties":{"status":{"type":"string"},"copyright":{"type":"string"},"num_results":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/Critic"}}}}}}}}},"definitions":{"Movie":{"type":"object","properties":{"nyt_movie_id":{"type":"integer"},"display_title":{"type":"string"},"sort_name":{"type":"string"},"mpaa_rating":{"type":"string"},"critics_pick":{"type":"integer"},"thousand_best":{"type":"string"},"byline":{"type":"string"},"headline":{"type":"string"},"capsule_review":{"type":"string"},"summary_short":{"type":"string"},"publication_date":{"type":"string"},"opening_date":{"type":"string"},"dvd_release_date":{"type":"string"},"date_updated":{"type":"string"},"seo_name":{"type":"string"},"link":{"type":"object","properties":{"type":{"type":"string"},"url":{"type":"string"},"suggested_link_text":{"type":"string"}}},"related_urls":{"type":"array","items":{"type":"object","properties":{"type":{"type":"string"},"url":{"type":"string"},"suggested_link_text":{"type":"string"}}}},"multimedia":{"type":"object","properties":{"resource":{"type":"object","properties":{"type":{"type":"string"},"src":{"type":"string"},"height":{"type":"integer"},"width":{"type":"integer"}}}}}}},"Critic":{"type":"object","properties":{"display_name":{"type":"string"},"sort_name":{"type":"string"},"status":{"type":"string"},"bio":{"type":"string"},"seo_name":{"type":"string"},"multimedia":{"type":"object","properties":{"resource":{"type":"object","properties":{"type":{"type":"string"},"src":{"type":"string"},"height":{"type":"integer"},"width":{"type":"integer"},"credit":{"type":"string"}}}}}}}},"securityDefinitions":{"apikey":{"type":"apiKey","name":"api-key","in":"query"}}}
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "The Movie Reviews API",
+    "description": "With the Movie Reviews API, you can search New York Times movie reviews by keyword and get lists of NYT Critics' Picks.",
+    "version": "2.0.0"
+  },
+  "host": "api.nytimes.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "\/svc\/movies\/v2\/",
+  "produces": [
+    "application\/json"
+  ],
+  "security": [
+    {
+      "apikey": [
+        
+      ]
+    }
+  ],
+  "paths": {
+    "\/reviews\/{resource-type}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "resource-type",
+            "in": "path",
+            "description": "Specify all to retrieve all reviews, including NYT Critics' Picks, and covering movies currently in theaters as well as movies on DVD.\n\nSpecify picks to get NYT Critics' Picks currently in theaters.\n\nSpecify dvd-picks to get NYT Critics' Picks on DVD.\n",
+            "type": "string",
+            "enum": [
+              "all",
+              "picks",
+              "dvd-picks"
+            ],
+            "required": true
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Positive integer, multiple of 20",
+            "type": "integer",
+            "required": false,
+            "default": 20
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n",
+            "type": "string",
+            "required": false,
+            "default": "by-publication-date",
+            "enum": [
+              "by-title",
+              "by-publication-date",
+              "by-opening-date",
+              "by-dvd-release-date"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Movies",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Movie"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/reviews\/search.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search keywords; matches movie title and indexed terms\n\nTo limit your search to exact matches only, surround your search string with single quotation marks (e.g., query='28+days+later'). Otherwise, responses will include partial matches (\"head words\") as well as exact matches (e.g., president will match president, presidents and presidential).\n  \n  If you specify multiple terms without quotation marks, they will be combined in an OR search.\n  \n  If you omit the query parameter, your request will be equivalent to a reviews and NYT Critics' Picks request (for example, reviews\/search.json?dvd=Y is equivalent to reviews\/dvd-picks.json).\n",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "critics-pick",
+            "in": "query",
+            "description": "Set this parameter to Y to limit the results to NYT Critics' Picks. To get only those movies that have not been highlighted by Times critics, specify critics-pick=N. (To get all reviews regardless of critics-pick status, simply omit this parameter.)\n",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "name": "thousand-best",
+            "in": "query",
+            "description": "Set this parameter to Y to limit the results to movies on the Times list of The Best 1,000 Movies Ever Made. To get only those movies that are not on the list, specify thousand-best=N. (To get all reviews regardless of thousand-best status, simply omit this parameter.)\n",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "name": "dvd",
+            "in": "query",
+            "description": "Set this parameter to Y to limit the results to movies that have been released on DVD. To get only those movies that have not been released on DVD, specify dvd=N. (To get all reviews regardless of format, simply omit this parameter.)\n",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "name": "reviewer",
+            "in": "query",
+            "type": "string",
+            "description": "Include this parameter to limit your results to reviews by a specific critic. Reviewer names should be hyphenated or concatenated with dots (e.g., manohla-dargis or manohla.dargis).\n"
+          },
+          {
+            "name": "publication-date",
+            "in": "query",
+            "type": "string",
+            "description": "Single date: YYYY-MM-DD\n\nStart and end date: YYYY-MM-DD;YYYY-MM-DD\n\nThe publication-date is the date the review was first published in The Times.\n"
+          },
+          {
+            "name": "opening-date",
+            "in": "query",
+            "type": "string",
+            "description": "Single date: YYYY-MM-DD\n\nStart and end date: YYYY-MM-DD;YYYY-MM-DD\n\nThe opening-date is the date the movie's opening date in the New York region.\n",
+            "required": false
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Positive integer, multiple of 20",
+            "type": "integer",
+            "required": false,
+            "default": 20
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Movies",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Movie"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/reviews\/reviewer\/{reviewer-name}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "reviewer-name",
+            "in": "path",
+            "type": "string",
+            "description": "Reviewer names should be hyphenated or concatenated with dots (e.g., manohla-dargis or manohla.dargis).",
+            "required": true
+          },
+          {
+            "name": "critics-pick",
+            "in": "query",
+            "description": "Set this parameter to Y to limit the results to NYT Critics' Picks. To get only those movies that have not been highlighted by Times critics, specify critics-pick=N. (To get all reviews regardless of critics-pick status, simply omit this parameter.)\n",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Positive integer, multiple of 20",
+            "type": "integer",
+            "required": false,
+            "default": 20
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sets the sort order of the results.\n\nResults ordered by-title are in ascending alphabetical order. Results ordered by one of the date parameters are in reverse chronological order.\n\nIf you do not specify a sort order, the results will be ordered by publication-date or (for dvd-picks) by dvd-release-date.\n",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Movies",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Movie"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "\/critics\/{resource-type}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "resource-type",
+            "in": "path",
+            "description": "all | full-time | part-time | reviewer | [reviewer-name]\n\nSpecify all to get all Times reviewers, or specify full-time or part-time to get that subset. Specify a reviewer's name to get details about a particular reviewer.\n\nReviewer names should be hyphenated or concatenated with dots (e.g., a-o-scott or a.o.scott).\n",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Movie Critics",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                },
+                "copyright": {
+                  "type": "string"
+                },
+                "num_results": {
+                  "type": "integer"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Critic"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Movie": {
+      "type": "object",
+      "properties": {
+        "nyt_movie_id": {
+          "type": "integer"
+        },
+        "display_title": {
+          "type": "string"
+        },
+        "sort_name": {
+          "type": "string"
+        },
+        "mpaa_rating": {
+          "type": "string"
+        },
+        "critics_pick": {
+          "type": "integer"
+        },
+        "thousand_best": {
+          "type": "string"
+        },
+        "byline": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "capsule_review": {
+          "type": "string"
+        },
+        "summary_short": {
+          "type": "string"
+        },
+        "publication_date": {
+          "type": "string"
+        },
+        "opening_date": {
+          "type": "string"
+        },
+        "dvd_release_date": {
+          "type": "string"
+        },
+        "date_updated": {
+          "type": "string"
+        },
+        "seo_name": {
+          "type": "string"
+        },
+        "link": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "suggested_link_text": {
+              "type": "string"
+            }
+          }
+        },
+        "related_urls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "suggested_link_text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "multimedia": {
+          "type": "object",
+          "properties": {
+            "resource": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "src": {
+                  "type": "string"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Critic": {
+      "type": "object",
+      "properties": {
+        "display_name": {
+          "type": "string"
+        },
+        "sort_name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "seo_name": {
+          "type": "string"
+        },
+        "multimedia": {
+          "type": "object",
+          "properties": {
+            "resource": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "src": {
+                  "type": "string"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "credit": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "query"
+    }
+  }
+}
