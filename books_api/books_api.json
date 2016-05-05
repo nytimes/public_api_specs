@@ -8,7 +8,7 @@
     "info": {
         "version": "",
         "title": "Books API",
-        "description": "## Welcome\n\nThis is a place to put general notes and extra information, for internal use.\n\nTo get started designing/documenting this API, select a version on the left."
+        "description": "The Books API provides information about book reviews and The New York Times bestsellers lists."
     },
     "paths": {
         "/lists/best-sellers/history.json": {
