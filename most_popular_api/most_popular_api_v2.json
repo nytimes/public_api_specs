@@ -9,7 +9,7 @@
     "info": {
         "version": "2.0.0",
         "title": "The Most Popular API",
-        "description": "## Welcome\n\nThis is a place to put general notes and extra information, for internal use.\n\nTo get started designing/documenting this API, select a version on the left."
+        "description": "Get lists of NYT Articles based on shares, emails, and views."
     },
     "produces": [
         "application/json"
