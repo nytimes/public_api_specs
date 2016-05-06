@@ -8,7 +8,7 @@
     "host": "api.nytimes.com",
     "info": {
         "version": "2.0.0",
-        "title": "The Most Popular API",
+        "title": "Most Popular API",
         "description": "Get lists of NYT Articles based on shares, emails, and views."
     },
     "produces": [
