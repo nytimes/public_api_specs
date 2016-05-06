@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Event Listings API",
-    "description": "With the Event Listings API, you can search the New York Times listing of noteworthy cultural events in New York City and beyond.",
+    "description": "Deprecated.  With the Event Listings API, you can search the New York Times listing of noteworthy cultural events in New York City and beyond.",
     "version": "1.0.0"
   },
   "host": "api.nytimes.com",
