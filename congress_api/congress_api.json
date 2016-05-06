@@ -8,7 +8,7 @@
     "info": {
         "version": "v3",
         "title": "Congress API",
-        "description": "Deprecated. Now provided by ProPublica."
+        "description": "Deprecated. Now provided by ProPublica (https://propublica.github.io/congress-api-docs/)."
     },
     "paths": {
         "/members/house/{state}/{district-number}/current.json": {
