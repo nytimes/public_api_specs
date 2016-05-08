@@ -1,14 +1,17 @@
 {
     "swagger": "2.0",
+    "basePath": "/svc/community/v3",
+    "host": "api.nytimes.com",
     "schemes": [
         "http"
     ],
-    "basePath": "/svc/community/v3",
-    "host": "api.nytimes.com",
     "info": {
         "version": "",
         "title": "Community API",
-        "description": "Get access to comments from registered users on New York Times articles."
+        "description": "Get access to comments from registered users on New York Times articles.",
+        "logo": {
+          "url": "img/logo_api_community_150X150.png"
+        }
     },
     "paths": {
         "/user-content/recent.json": {
