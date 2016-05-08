@@ -10,9 +10,9 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/suggest\/v1\/",
+  "basePath": "/svc/suggest/v1/",
   "produces": [
-    "application\/json"
+    "application/json"
   ],
   "security": [
     {
@@ -22,7 +22,7 @@
     }
   ],
   "paths": {
-    "\/timestags.json": {
+    "/timestags.json": {
       "get": {
         "parameters": [
           {
