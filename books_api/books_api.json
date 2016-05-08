@@ -8,7 +8,10 @@
     "info": {
         "version": "",
         "title": "Books API",
-        "description": "The Books API provides information about book reviews and The New York Times bestsellers lists."
+        "description": "The Books API provides information about book reviews and The New York Times bestsellers lists.",
+        "logo": {
+            "url": "img/logo_api_books_150X150.png"
+        }
     },
     "paths": {
         "/lists/best-sellers/history.json": {
