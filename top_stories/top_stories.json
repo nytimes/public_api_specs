@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Top Stories API",
-    "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.",
+    "title": "Top Stories V1",
+    "description": "Deprecated.  The Top Stories API provides JSON and JSONP lists of articles and associated images by section.",
     "version": "1.0.0"
   },
   "host": "api.nytimes.com",
@@ -10,9 +10,9 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/topstories\/v1\/",
+  "basePath": "/svc/topstories/v1/",
   "produces": [
-    "text\/json"
+    "application/json"
   ],
   "security": [
     {
