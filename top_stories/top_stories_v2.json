@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Top Stories API V2",
+    "title": "Top Stories V2",
     "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.",
     "version": "2.0.0"
   },
@@ -10,9 +10,9 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/topstories\/v2\/",
+  "basePath": "/svc/topstories/v2/",
   "produces": [
-    "application\/json"
+    "application/json"
   ],
   "security": [
     {
