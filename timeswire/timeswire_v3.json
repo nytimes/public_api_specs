@@ -10,9 +10,9 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/news\/v3\/content",
+  "basePath": "/svc/news/v3/content",
   "produces": [
-    "application\/json"
+    "application/json"
   ],
   "security": [
     {
@@ -22,7 +22,7 @@
     }
   ],
   "paths": {
-    "\/{source}\/{section}.json": {
+    "/{source}/{section}.json": {
       "get": {
         "parameters": [
           {
@@ -40,7 +40,7 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http:\/\/api.nytimes.com\/svc\/news\/v3\/content\/section-list.json\n",
+            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n",
             "required": true,
             "type": "string"
           },
@@ -79,7 +79,7 @@
                 "results": {
                   "type": "array",
                   "items": {
-                    "$ref": "#\/definitions\/Article"
+                    "$ref": "#/definitions/Article"
                   }
                 }
               }
@@ -88,7 +88,7 @@
         }
       }
     },
-    "\/{source}\/{section}\/{time-period}.json": {
+    "/{source}/{section}/{time-period}.json": {
       "get": {
         "parameters": [
           {
@@ -106,7 +106,7 @@
           {
             "name": "section",
             "in": "path",
-            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http:\/\/api.nytimes.com\/svc\/news\/v3\/content\/section-list.json\n",
+            "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n",
             "required": true,
             "type": "string"
           },
@@ -152,7 +152,7 @@
                 "results": {
                   "type": "array",
                   "items": {
-                    "$ref": "#\/definitions\/Article"
+                    "$ref": "#/definitions/Article"
                   }
                 }
               }
@@ -161,7 +161,7 @@
         }
       }
     },
-    "\/content.json": {
+    "/content.json": {
       "get": {
         "parameters": [
           {
@@ -190,7 +190,7 @@
                 "results": {
                   "type": "array",
                   "items": {
-                    "$ref": "#\/definitions\/Article"
+                    "$ref": "#/definitions/Article"
                   }
                 }
               }
