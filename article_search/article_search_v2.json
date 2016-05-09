@@ -108,16 +108,6 @@
             "required": false,
             "type": "boolean",
             "default": false
-          },
-          {
-            "name": "callback",
-            "in": "query",
-            "description": "The name of the function the API call results will be passed to. Required when using JSONP. This parameter has only one valid value: callback=svc_search_v2_articlesearch\n",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "svc_search_v2_articlesearch"
-            ]
           }
         ],
         "tags": [
