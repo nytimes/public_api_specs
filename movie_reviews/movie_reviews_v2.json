@@ -5,7 +5,7 @@
     "title": "Movie Reviews API",
     "description": "With the Movie Reviews API, you can search New York Times movie reviews by keyword and get lists of NYT Critics' Picks.",
     "logo": {
-      "url": "img/logo_api_movies_150X150.png"
+      "url": "img/logo_api_movies_150x150.png"
     }
   },
   "host": "api.nytimes.com",

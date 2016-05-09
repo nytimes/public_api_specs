@@ -5,7 +5,7 @@
     "title": "Event Listings API",
     "description": "Deprecated.  With the Event Listings API, you can search the New York Times listing of noteworthy cultural events in New York City and beyond.",
     "logo": {
-      "url": "img/logo_api_events_150X150.png"
+      "url": "img/logo_api_events_150x150.png"
     }
   },
   "host": "api.nytimes.com",

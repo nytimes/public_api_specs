@@ -10,7 +10,7 @@
         "title": "Congress API",
         "description": "Deprecated. Now provided by ProPublica (https://propublica.github.io/congress-api-docs/).",
         "logo": {
-            "url": "img/logo_api_congress_150X150.png"
+            "url": "img/logo_api_congress_150x150.png"
         }
     },
     "paths": {

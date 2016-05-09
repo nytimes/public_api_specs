@@ -5,7 +5,7 @@
     "title": "Times Newswire API",
     "description": "With the Times Newswire API, you can get links and metadata for Times articles and blog posts as soon as they are published on NYTimes.com. The Times Newswire API provides an up-to-the-minute stream of published items.",
     "logo": {
-      "url": "img/logo_api_times_wire_150X150.png"
+      "url": "img/logo_api_times_wire_150x150.png"
     }
   },
   "host": "api.nytimes.com",

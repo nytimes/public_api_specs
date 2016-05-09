@@ -5,7 +5,7 @@
     "title": "Top Stories V2",
     "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.",
     "logo": {
-      "url": "img/logo_api_top_stories_150X150.png"
+      "url": "img/logo_api_top_stories_150x150.png"
     }
   },
   "host": "api.nytimes.com",

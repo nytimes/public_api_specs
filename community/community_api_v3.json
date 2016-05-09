@@ -10,7 +10,7 @@
         "title": "Community API",
         "description": "Get access to comments from registered users on New York Times articles.",
         "logo": {
-          "url": "img/logo_api_community_150X150.png"
+          "url": "img/logo_api_community_150x150.png"
         }
     },
     "paths": {

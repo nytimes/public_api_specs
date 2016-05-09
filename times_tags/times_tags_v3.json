@@ -5,7 +5,7 @@
     "title": "TimesTags API",
     "description": "With the TimesTags API, you can mine the riches of the New York Times tag set. The TimesTags service matches your query to the controlled vocabularies that fuel NYTimes.com metadata. You supply a string of characters, and the service returns a ranked list of suggested terms.",
     "logo": {
-      "url": "img/logo_api_tags_150X150.png"
+      "url": "img/logo_api_tags_150x150.png"
     }
   },
   "host": "api.nytimes.com",

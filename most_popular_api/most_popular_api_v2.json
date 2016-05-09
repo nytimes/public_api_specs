@@ -11,7 +11,7 @@
         "title": "Most Popular API",
         "description": "Get lists of NYT Articles based on shares, emails, and views.",
         "logo": {
-            "url": "img/logo_api_most_popular_150X150.png"
+            "url": "img/logo_api_most_popular_150x150.png"
         }
     },
     "produces": [
