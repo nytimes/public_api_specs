@@ -13,9 +13,9 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/search\/v2",
+  "basePath": "/svc/search/v2",
   "produces": [
-    "application\/json"
+    "application/json"
   ],
   "security": [
     {
@@ -25,22 +25,11 @@
     }
   ],
   "paths": {
-    "\/articlesearch.{format}": {
+    "/articlesearch.json": {
       "get": {
         "summary": "Article Search",
         "description": "Article Search requests use the following URI structure:\n",
         "parameters": [
-          {
-            "name": "format",
-            "in": "path",
-            "description": "JSON (.json), JSONP (.jsonp)",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "json",
-              "jsonp"
-            ]
-          },
           {
             "name": "q",
             "in": "query",
@@ -146,7 +135,7 @@
                     "docs": {
                       "type": "array",
                       "items": {
-                        "$ref": "#\/definitions\/Doc"
+                        "$ref": "#/definitions/Doc"
                       }
                     },
                     "meta": {
