@@ -261,7 +261,8 @@
                     "enum": [
                         "json",
                         "jsonp"
-                    ]
+                    ],
+                    "x-consoleDefault": "json"
                 }
             ],
             "get": {

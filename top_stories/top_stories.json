@@ -1,3 +1,4 @@
+
 {
   "swagger": "2.0",
   "info": {
@@ -54,7 +55,8 @@
               "travel",
               "magazine",
               "realestate"
-            ]
+            ],
+            "x-consoleDefault": "home"
           },
           {
             "name": "format",
@@ -65,7 +67,8 @@
             "enum": [
               "json",
               "jsonp"
-            ]
+            ],
+            "x-consoleDefault": "json"
           },
           {
             "name": "callback",

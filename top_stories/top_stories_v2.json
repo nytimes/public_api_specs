@@ -63,7 +63,8 @@
               "automobiles",
               "obituaries",
               "insider"
-            ]
+            ],
+            "x-consoleDefault": "home"
           },
           {
             "name": "format",
@@ -74,7 +75,8 @@
             "enum": [
               "json",
               "jsonp"
-            ]
+            ],
+            "x-consoleDefault": "json"
           },
           {
             "name": "callback",
