@@ -69,7 +69,7 @@
           {
             "name": "query",
             "in": "query",
-            "description": "Precedes the search term string. Used in a Search Query. Except for <specific_concept_name>, Search Query will take the required parameters listed above (<concept_type>, <concept_uri>, <article_uri>) as an optional_parameter in addition to the query=<query_term>.",
+            "description": "Precedes the search term string. Used in a Search Query. Except for &lt;specific_concept_name&gt;, Search Query will take the required parameters listed above (&lt;concept_type&gt;, &lt;concept_uri&gt;, &lt;article_uri&gt;) as an optional_parameter in addition to the query=&lt;query_term&gt;.",
             "required": true,
             "type": "string"
           }
@@ -101,13 +101,13 @@
         }
       }
     },
-    "\/concept\/search.json": {
+    "\/search.json": {
       "get": {
         "parameters": [
           {
             "name": "query",
             "in": "query",
-            "description": "Precedes the search term string. Used in a Search Query. Except for <specific_concept_name>, Search Query will take the required parameters listed above (<concept_type>, <concept_uri>, <article_uri>) as an optional_parameter in addition to the query=<query_term>.",
+            "description": "Precedes the search term string. Used in a Search Query. Except for &lt;specific_concept_name&gt;, Search Query will take the required parameters listed above (&lt;concept_type&gt;, &lt;concept_uri&gt;, &lt;article_uri&gt;) as an optional_parameter in addition to the query=&lt;query_term&gt;.",
             "required": true,
             "type": "string"
           },
