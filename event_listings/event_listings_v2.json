@@ -13,7 +13,7 @@
     "http",
     "https"
   ],
-  "basePath": "\/svc\/events\/v2\/",
+  "basePath": "\/svc\/events\/v2",
   "produces": [
     "application\/json"
   ],
