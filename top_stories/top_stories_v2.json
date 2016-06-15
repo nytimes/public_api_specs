@@ -13,7 +13,7 @@
     "http",
     "https"
   ],
-  "basePath": "/svc/topstories/v2/",
+  "basePath": "/svc/topstories/v2",
   "produces": [
     "application/json"
   ],
