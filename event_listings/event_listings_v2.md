@@ -131,4 +131,47 @@ To search within a radius, you must specify the longitude and latitude of the ce
 ll=40.756146,-73.99021
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+By default, the radius is 1,000 meters, you can set a custom search radius:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ll=40.756146,-73.99021&radius=2500
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Note: setting a radius without a center point will return an error.
+
+When searching within a radius, you can sort search results based on their proximity to the center point:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ll=40.756146,-73.99021&radius=2500&sort=dist+asc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When searching within a bounded box, you must specify both a southwest and northeast corner:
+
+sw=40.756146,-73.99021&ne=40.778267,-73.96988
+For a full example search query, see Examples.
+
+### FACETED SEARCH
+Using facets to limit the categories in your search can result in more exact results. For example, you can search for Jazz events in Manhattan by filtering your results using facets:
+
+filters=category:Jazz,borough:Manhattan
+You can also specify multiple values for a single facet:
+
+filters=category:(Jazz Dance),borough:Manhattan
+See Facets, for more information. For a full example search query, see Examples.
+
+### FULL TEXT SEARCH
+Using the query parameter will perform a full text search on the web_description, event_name and vanue_name fields. For example, to search for any events that contains the word Avenue or Street:
+
+query=Avenue+Street
+To perform an AND search, and only return results that contain the complete phrase "Avenue Q", wrap the search term in quotes:
+
+query="Avenue Q"
+For a full example search query, see Examples.
+
+### FACETS
+Below is a list of the facets you can filter your search on using the filters parameter. For an overview of faceted search, see the Faceted Search section. The Examples section has examples of different searches, some of which filter by facets.
+
+Each facet can be filtered by the values that facet can accept. For a full list of all acceptable facet:value pairs look at the facet section of any Event Listings query that has the facets parameter set to 1.
+
+
 
