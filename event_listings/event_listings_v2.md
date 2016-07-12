@@ -174,4 +174,26 @@ Below is a list of the facets you can filter your search on using the filters pa
 Each facet can be filtered by the values that facet can accept. For a full list of all acceptable facet:value pairs look at the facet section of any Event Listings query that has the facets parameter set to 1.
 
 
+### Examples
 
+category: Theater
+
+subcategory: Off Broadway
+
+borough: Queens
+
+neighborhood: Greenwich Village
+
+times_pick: true
+
+free: true
+
+kid_friendly: true
+
+last_chance: true
+
+festival: true
+
+long_running_show: true
+
+previews_and_openings: true
