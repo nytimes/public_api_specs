@@ -200,33 +200,31 @@ previews_and_openings: true
 
 Below is a simple example of filtering a search by a single facet:
 
-filters=category:forChildren
+### filters=category:forChildren
 If the facet value contains spaces, you must enclose it in double quotes:
 
-filters=borough:"Staten Island"
+### filters=borough:"Staten Island"
 You can exclude facets from your filtered search:
 
-filters=category:(-Jazz)
+### filters=category:(-Jazz)
 You can filter on multiple facets:
 
-filters=category:Jazz,borough:Manhattan
+### filters=category:Jazz,borough:Manhattan
 You can also filter a search on more than one value for a single facet. The values should be inside parentheses:
 
-filters=neighborhood:(SoHo Harlem "Midtown South")
+### filters=neighborhood:(SoHo Harlem "Midtown South")
 
 ## Responses
 
 An HTTP response code of 200 (OK) is returned for all requests that are successfully understood and processed. See the Errors section for additional response codes.
 
-FORMATS
-The default response format is JSON. To return XML or serialized PHP instead, add the appropriate extension to your request URI (.xml or .sphp).
-
-DATA FIELDS
-In XML responses, the data is wrapped in a <result_set> element.
+### DATA FIELDS
 Setting the facets parameter to true will display a set of facet values , drawn from all search results. These sets are collected in a facets array at the beginning of the response. 
 
 Note: the sets of facet values (collected in the facets array) are returned in addition to the search results. Each search result record can also include facet values for that specific result, if facets are specified with the fields parameter.
+
 The API returns 10 records at a time. However, the facets array at the beginning of the response is drawn from all results, not just the current set of 10.
+
 Most of the data returned by the Event Listings API is self-explanatory. This section provides additional information about some of the response fields.
 
 Note: Sortable fields are fields that you can sort results on using the sort parameter.
