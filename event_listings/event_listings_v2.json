@@ -67,7 +67,7 @@
             "required": false
           },
           {
-            "name": "filter",
+            "name": "filters",
             "in": "query",
             "description": "Filters search results based on the facets provided.  For more information on the values you can filter on, see Facets.\n",
             "type": "string",
