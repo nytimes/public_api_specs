@@ -30,18 +30,18 @@ http://api.nytimes.com/svc/events/{version}/listings[.response-format]?[optional
 
 With the exceptions of version (specified in the URI path) and response-format (added to the path as an extension), these parameters are specified as name-value pairs in a query string.
 
-*version* (Required)	
+## version (Required)	
 v2
 The current version is v2. (Version 1 is for internal use only.)
 
-*api-key* (Required)	
+## api-key (Required)	
 Alphanumeric
 For more information, see Requesting a Key.
 
-*response-format*
+## response-format
 Sets the representation data format	.json (extension)
 
-*ll*
+## ll
 Limits the results to events within radius distance of the specified latitude and longitude coordinates.	Two float values, separated by a comma
 
 latitude,longitude
@@ -50,7 +50,7 @@ For example, the following parameter would use The New York Times Building as th
 
 By default, the search radius is 1,000 meters. You can set a search radius with the radius parameter.
 
-*radius*
+## radius
 Sets the radius of a spatial search (in meters)
 (ll must be specified)	Positive integer
 
@@ -58,14 +58,14 @@ Integer value. The default value is 1,000.
 
 Note: The ll parameter is required to use radius.
 
-*ne*
+## ne
 Along with sw, forms a bounded box using the longitude and latitude coordinates specified as the northeast corner. The search results are limited to the resulting box.	Two float values, separated by a comma
 
 latitude,longitude 
 
 Note: The sw parameter is required to use this parameter.
 
-*sw*
+## sw
 Along with ne, forms a bounded box using the longitude and latitude coordinates specified as the southwest corner. The search results are limited to the resulting box.	Two float values, separated by a comma
 
 latitude,longitude 
@@ -73,13 +73,13 @@ latitude,longitude
 Note: The ne parameter is required to use this parameter.
 query	Search keywords to perform a text search on the fields: web_description, event_name and venue_name. 'AND' searches can be performed by wrapping query terms in quotes. If you do not specify a query, all results will be returned.
 
-*filters*
+## filters
 Filters search results based on the facets provided	Drill down on search results by filtering on facets. For more information on the values you can filter on, see Facets.
 
-*date_range*
+## date_range
 Limits the results to events occuring within the specified date range	Start date to end date in the following format: YYYY-MM-DD:YYYY-MM-DD
 
-*facets*
+## facets
 Displays a count of all facets in the response	
 0 | 1
 
@@ -87,7 +87,7 @@ When facets is set to 1, a count of all facets will be included in the response.
 
 Default value: 0.
 
-*sort*
+## sort
 Sorts your results on the fields specified	
 sort_value1+[asc | desc],sort_value2+[asc|desc],[...]
 
@@ -97,12 +97,12 @@ If you are doing a spatial search with the ll parameter, you can also sort by th
 
 Note: either +asc or +desc is required when using the sort parameter.
 
-*limit*
+## limit
 Limits the number of results returned	Integer
 
 The default value is 20.
 
-*offset*
+## offset
 Sets the starting point of the result set	Positive integer 
 
 The first 20 results are shown by default. To page through the results, set offset to the appropriate value (e.g., offset=20 displays results 21–40).
