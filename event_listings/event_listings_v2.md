@@ -231,4 +231,105 @@ Note: Sortable fields are fields that you can sort results on using the sort par
 
 In this table, fields are listed in alphabetical order.
 
+| Name | Data Type | Sortable Field | Description |
+| critic_name | Strings | Yes | The name of the NYTimes critic who reviewed the event |
+| category | String | Yes | The category of the event |
+| event_date_list | Array (of Dates) | No | The date(s) the event will be taking place |
+| event_detail_url | String | No | The URL of the event detail page on NYTimes.com |
+| event_id	Integer	Yes	An identifier assigned to the event
+| event_name | String | Yes | The name of the event |
+| event_schedule_id | Integer | Yes | An identifier assigned to the schedule for the event festival	Boolean	Yes	Indicates if the event is a festival |
+| film_rating | Boolean | Yes | Indicates if the event has a film rating | 
+| free | Boolean | Yes | Indicates if the event is free-of-charge |
+| kid_friendly | Boolean | Yes | Indicates if the event is considered suitable for young audiences |
+| last_chance | Boolean | Yes | Indicates whether the event has an approaching end date |
+| last_modified | Date | Yes | The last time information for the event was changed |
+| long_running_show | Boolean | Yes | Indicates whether the event has been in recurring for a long period of time |
+| previews_and_openings | Boolean | Yes | Indicates whether the event is a preview or opening event |
+| recurring_end_date | Date | No | The date the event will end it's recurring schedule (see recur_days for the days of the week the event takes place) |
+| recurring_start_date | Date | No | The date the event began it's recurring schedule (see recur_days for the days of the week the event takes place) |
+| recur_days | Array (Strings) | No | The days of the week the event takes place |
+| times_pick | Boolean | Yes | Indicates whether the event is an NYTimes Critics' Pick |
+| web_description | String | No | A description of the event |
+
+## Examples
+These examples do not include the required api-key parameter. Be sure to include your API key in your request.
+
+Each example is linked to the Times API Console, which allows you to generate requests and responses without coding.
+
+### SPATIAL SEARCH REQUESTS
+Search for all events within 1,000 meters of The New York Times Building
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&ll=40.756146,-73.99021&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for all events within 2,500 meters of The New York Times Building
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?ll=40.756146,-73.99021&radius=2500&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for all events within a bounded box with The New York Times as the southeast corner and Central Park as the northwest corner
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?sw=40.756146,-73.99021&ne=40.778267,-73.96988&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##3 FACET SEARCH REQUESTS
+Search for all Dance events in Manhattan
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&filters=category:Dance,borough:Manhattan&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for all events in Manhattan that aren't Dance
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&filters=category:(-Dance),borough:Manhattan&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for all events that are classified as either Theater or Dance
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&filters=category:(Theater+Dance)&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+### FULL TEXT SEARCH REQUESTS
+Search for any events containing "classical" or "play" in the event name, venue name or web description
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&query=classical+play&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for any events containing the full phrase "hip hop" in the event name, venue name or web description
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&query=%22hip+hop%22&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+### COMBINING ALL SEARCH REQUESTS TYPES
+Search for any events containing "Book of Mormon" in the event name, venue name or web description that is within 3,000 meters of The New York Times Building and sorting the results by proximity to The New York Times Building
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&query=%22Book+of+Mormon%22&ll=40.756146%2C-73.99021&radius=3000&sort=dist+asc&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Search for the first 10 Off Broadway events starting with the 6th event
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/events/v2/listings.json?&filters=subcategory:"Off+Broadway"&limit=10&offset=5&api-key=####
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+## Errors
+The Event Listings API returns the standard errors.
+
+### 400 Bad Request
+A required parameter was not specified or your request was otherwise improperly formed. See the body of the error response for more details.
+
+### 404 Not Found
+The resource you requested does not exist.
+
+### 500 Server Error
+The request was successfully understood, but it could not be processed due to a server error. Please try your request again later, and contact us if the problem continues.
 
