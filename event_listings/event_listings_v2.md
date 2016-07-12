@@ -232,25 +232,45 @@ Note: Sortable fields are fields that you can sort results on using the sort par
 In this table, fields are listed in alphabetical order.
 
 | Name | Data Type | Sortable Field | Description |
+
 | critic_name | Strings | Yes | The name of the NYTimes critic who reviewed the event |
+
 | category | String | Yes | The category of the event |
+
 | event_date_list | Array (of Dates) | No | The date(s) the event will be taking place |
+
 | event_detail_url | String | No | The URL of the event detail page on NYTimes.com |
-| event_id	Integer	Yes	An identifier assigned to the event
+
+| event_id | Integer	| Yes	| An identifier assigned to the event |
+
 | event_name | String | Yes | The name of the event |
+
 | event_schedule_id | Integer | Yes | An identifier assigned to the schedule for the event festival	Boolean	Yes	Indicates if the event is a festival |
+
 | film_rating | Boolean | Yes | Indicates if the event has a film rating | 
+
 | free | Boolean | Yes | Indicates if the event is free-of-charge |
+
 | kid_friendly | Boolean | Yes | Indicates if the event is considered suitable for young audiences |
+
 | last_chance | Boolean | Yes | Indicates whether the event has an approaching end date |
+
 | last_modified | Date | Yes | The last time information for the event was changed |
+
 | long_running_show | Boolean | Yes | Indicates whether the event has been in recurring for a long period of time |
+
 | previews_and_openings | Boolean | Yes | Indicates whether the event is a preview or opening event |
+
 | recurring_end_date | Date | No | The date the event will end it's recurring schedule (see recur_days for the days of the week the event takes place) |
+
 | recurring_start_date | Date | No | The date the event began it's recurring schedule (see recur_days for the days of the week the event takes place) |
+
 | recur_days | Array (Strings) | No | The days of the week the event takes place |
+
 | times_pick | Boolean | Yes | Indicates whether the event is an NYTimes Critics' Pick |
+
 | web_description | String | No | A description of the event |
+
 
 ## Examples
 These examples do not include the required api-key parameter. Be sure to include your API key in your request.
