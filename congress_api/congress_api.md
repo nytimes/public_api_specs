@@ -1,13 +1,14 @@
 The Congress API
 ================
 
+**MOVED:** The Congress API is now provided by [ProPublica](https://propublica.github.io/congress-api-docs/).  See [https://propublica.github.io/congress-api-docs/].
+
+
 With the Congress API, you can get summaries of roll-call votes in the U.S.
 Congress; get lists of members of Congress; and get vote data, floor
 appearances, biographical information and role data for individual House and
 Senate members. You can also get information about bills (summaries and bill
 actions), nominees, committees and schedules.
-
- 
 
 ### CONGRESSIONAL DATA
 
@@ -41,7 +42,6 @@ The Congress API returns the following types of data:
     party counts by state; committees and committee rosters; and chamber
     schedules.
 
- 
 
 ### DATA SOURCES
 
@@ -78,7 +78,6 @@ The data returned by the Congress API is compiled from the following sources:
 Certain fields in the API responses (such as party totals) are calculated by The
 Times, based on these data sources.
 
- 
 
 Requests
 --------
@@ -87,12 +86,9 @@ These examples use an `.json `extension for illustration purposes. Also, these
 examples do not include the required `api-key` parameter. Be sure to include
 your API key in your request.
 
- 
 
 Members
 -------
-
-###  
 
 ### MEMBER LISTS
 
@@ -112,7 +108,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/103/senate/member
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/103/senate/members.json?state=NM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBER BIO AND ROLES
 
@@ -126,7 +121,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/L000447.j
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/B000444.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### NEW MEMBERS
 
@@ -134,7 +128,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/B000444.j
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/new.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### CURRENT MEMBERS BY STATE/DISTRICT
 
@@ -146,7 +139,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/senate/OH
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/house/CO/2/current.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBERS LEAVING OFFICE
 
@@ -154,7 +146,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/house/CO/
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/members/leaving.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBER VOTE POSITIONS
 
@@ -168,7 +159,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/C001041/v
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/N000147/votes.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBER VOTE COMPARISON
 
@@ -176,7 +166,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/N000147/v
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/C001041/votes/S001141/109/senate.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### BILLS COSPONSORED BY A MEMBER
 
@@ -184,7 +173,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/C001041/v
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/A000014/bills/cosponsored.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBER SPONSORSHIP COMPARISON
 
@@ -192,7 +180,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/A000014/b
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/C001041/bills/S001141/109/senate.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### MEMBER FLOOR APPEARANCES
 
@@ -200,9 +187,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/C001041/b
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/A000069/floor_appearances.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
-
- 
 
 Votes
 -----
@@ -215,7 +199,6 @@ Senate:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/110/senate/sessions/2/votes/194.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 House:
 
@@ -223,7 +206,6 @@ House:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/105/house/sessions/2/votes/38.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### VOTES BY TYPE
 
@@ -233,7 +215,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/105/house/session
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/votes/missed.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 **Party Votes**
 
@@ -241,7 +222,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/votes/
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/house/votes/party.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 **Lone No Votes**
 
@@ -249,7 +229,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/house/votes/p
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/108/house/votes/loneno.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 **Perfect Votes**
 
@@ -257,7 +236,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/108/house/votes/l
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/house/votes/perfect.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### VOTES BY DATE
 
@@ -269,7 +247,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/house/votes/2008-
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/house/votes/2008/02.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### NOMINATION VOTES
 
@@ -277,7 +254,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/house/votes/2008/
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominations.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Bills
 -----
@@ -290,7 +266,6 @@ Recently introduced House bills:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/house/bills/introduced.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Recently updated Senate bills:
 
@@ -298,7 +273,6 @@ Recently updated Senate bills:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/bills/updated.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### BILLS BY MEMBER
 
@@ -306,7 +280,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/bills/
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/P000587/bills/updated.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### BILL DETAILS
 
@@ -314,11 +287,9 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/members/P000587/b
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/hr1866.xml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### BILL SUBJECTS, AMENDMENTS AND RELATED BILLS
 
- 
 
 Bill subjects:
 
@@ -326,7 +297,6 @@ Bill subjects:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/sres88/subjects.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Bill Amendments:
 
@@ -334,7 +304,6 @@ Bill Amendments:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/hr1/amendments.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Related Bills:
 
@@ -342,7 +311,6 @@ Related Bills:
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/hr381/related.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### BILL COSPONSORS
 
@@ -350,7 +318,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/hr381/r
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/bills/s1230/cosponsors.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Nominees
 --------
@@ -361,7 +328,6 @@ Nominees
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominees/confirmed.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### NOMINEE DETAILS
 
@@ -369,7 +335,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominees/conf
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominees/PN1020.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### NOMINEES BY STATE
 
@@ -377,7 +342,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominees/PN10
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/nominees/state/CA.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 Other
 -----
@@ -388,7 +352,6 @@ Other
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/states/members/party.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### COMMITTEES AND ROSTERS
 
@@ -400,7 +363,6 @@ http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/house/committ
 http://api.nytimes.com/svc/politics/v3/us/legislative/congress/111/senate/committees/SSFR.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
 
 ### CHAMBER SCHEDULE
 
