@@ -1,7 +1,7 @@
 The Congress API
 ================
 
-**MOVED:** The Congress API is now provided by [ProPublica](https://propublica.github.io/congress-api-docs/).  See (https://propublica.github.io/congress-api-docs/).
+**MOVED:** The Congress API is now provided by [ProPublica](https://propublica.github.io/congress-api-docs/).  See https://propublica.github.io/congress-api-docs/.
 
 
 With the Congress API, you can get summaries of roll-call votes in the U.S.
