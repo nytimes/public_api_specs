@@ -6,7 +6,7 @@
     "basePath": "/svc/books/v3",
     "host": "api.nytimes.com",
     "info": {
-        "version": "",
+        "version": "3.0.0",
         "title": "Books API",
         "description": "The Books API provides information about book reviews and The New York Times bestsellers lists.",
         "logo": {

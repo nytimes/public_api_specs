@@ -6,7 +6,7 @@
         "http"
     ],
     "info": {
-        "version": "",
+        "version": "3.0.0",
         "title": "Community API",
         "description": "Get access to comments from registered users on New York Times articles.",
         "logo": {
