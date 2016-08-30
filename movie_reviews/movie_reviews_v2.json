@@ -13,7 +13,7 @@
     "http",
     "https"
   ],
-  "basePath": "/svc/movies/v2/",
+  "basePath": "/svc/movies/v2",
   "produces": [
     "application/json"
   ],
