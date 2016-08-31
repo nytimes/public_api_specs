@@ -171,14 +171,7 @@
                     "application/json",
                     "application/xml"
                 ],
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
@@ -273,14 +266,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
