@@ -37,13 +37,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "api-key",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
@@ -178,11 +172,6 @@
                     "application/xml"
                 ],
                 "parameters": [
-                    {
-                        "name": "api-key",
-                        "in": "query",
-                        "type": "string"
-                    },
                     {
                         "name": "Accept",
                         "in": "header",
