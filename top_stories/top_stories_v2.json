@@ -161,7 +161,10 @@
           }
         },
         "org_facet": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "per_facet": {
           "type": "array",
