@@ -64,9 +64,15 @@ Here is a portion of a sample JSON response:
                 "Democratic Party",
                 "Republican Party"
             ],
-            per_facet: "",
-            geo_facet: "",
-            multimedia: 
+            "per_facet":[  
+                "Scott, Keith Lamont (1973-2016)",
+                "McCrory, Pat"
+            ],
+            "geo_facet":[  
+                "North Carolina",
+                "Charlotte (NC)"
+            ],
+            multimedia:
             [
                 {
                     url: "http://static01.nyt.com/images/2014/12/03/business/Economy/Economy-thumbStandard.jpg",
@@ -83,7 +89,7 @@ Here is a portion of a sample JSON response:
         },
         ...
     ]
-} 
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Supported Multimedia Options
