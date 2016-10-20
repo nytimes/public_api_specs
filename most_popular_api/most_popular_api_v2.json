@@ -21,16 +21,10 @@
         "/mostshared/{section}/{time-period}.json": {
             "parameters": [
                 {
-                    "name": "section",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
+                  "$ref": "#/parameters/Section"
                 },
                 {
-                    "name": "time-period",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
+                  "$ref": "#/parameters/TimePeriod"
                 }
             ],
             "get": {
@@ -43,13 +37,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "api-key",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
@@ -166,16 +154,10 @@
         "/mostemailed/{section}/{time-period}.json": {
             "parameters": [
                 {
-                    "name": "section",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
+                  "$ref": "#/parameters/Section"
                 },
                 {
-                    "name": "time-period",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
+                  "$ref": "#/parameters/TimePeriod"
                 }
             ],
             "get": {
@@ -189,19 +171,7 @@
                     "application/json",
                     "application/xml"
                 ],
-                "parameters": [
-                    {
-                        "name": "api-key",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
@@ -278,7 +248,14 @@
             }
         },
         "/mostviewed/{section}/{time-period}.json": {
-            "parameters": [],
+            "parameters": [
+                {
+                  "$ref": "#/parameters/Section"
+                },
+                {
+                  "$ref": "#/parameters/TimePeriod"
+                }
+            ],
             "get": {
                 "summary": "Most Viewed by Section & Time Period",
                 "description": "",
@@ -289,14 +266,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "",
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "An array of Articles",
@@ -395,32 +365,6 @@
                 "string"
             ],
             "items": {}
-        },
-        "TimePeriod": {
-            "in": "path",
-            "description": "Number of days `1 | 7 | 30 ` corresponds to a day, a week, or a month of content.",
-            "type": "string",
-            "enum": [
-                "1",
-                "7",
-                "30"
-            ]
-        },
-        "SharedTypes": {
-            "in": "query",
-            "description": "Limits the results by the method used to share the items only works on mostshared requests.",
-            "type": "string",
-            "enum": [
-                "digg",
-                "email",
-                "facebook",
-                "mixx",
-                "myspace",
-                "permalink",
-                "timespeople",
-                "twitter",
-                "yahoobuzz"
-            ]
         },
         "Article": {
             "type": "object",
@@ -552,8 +496,39 @@
                     }
                 }
             }
+        }
+    },
+    "parameters": {
+        "TimePeriod": {
+            "name": "time-period",
+            "in": "path",
+            "description": "Number of days `1 | 7 | 30 ` corresponds to a day, a week, or a month of content.",
+            "type": "string",
+            "enum": [
+                "1",
+                "7",
+                "30"
+            ]
+        },
+        "SharedTypes": {
+            "name": "shared-types",
+            "in": "query",
+            "description": "Limits the results by the method used to share the items only works on mostshared requests.",
+            "type": "string",
+            "enum": [
+                "digg",
+                "email",
+                "facebook",
+                "mixx",
+                "myspace",
+                "permalink",
+                "timespeople",
+                "twitter",
+                "yahoobuzz"
+            ]
         },
         "Section": {
+            "name": "section",
             "in": "path",
             "description": "Limits the results by one or more sections. You can use\n`all-sections` or one or more section names seperated by semicolons. See `viewed/sections.json` call to get a list of sections. \n",
             "type": "string",
@@ -597,6 +572,7 @@
             ]
         },
         "OffSet": {
+            "name": "offset",
             "in": "query",
             "description": "Positive integer in a multiple of 20",
             "type": "integer",
