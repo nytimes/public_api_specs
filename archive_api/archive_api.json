@@ -1,0 +1,83 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Archive API V1",
+    "description": "Alpha.  The Archive API provides JSON lists of NYT articles by month.",
+    "logo": {
+      "url": "img/logo_api_archive_150x150.png"
+    }
+  },
+  "host": "api.nytimes.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "/svc/archive/v1",
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "apikey": [
+      ]
+    }
+  ],
+  "paths": {
+    "\/{year}/{month}.json": {
+      "get": {
+        "summary": "Archive API",
+        "description": "The Archive API provides JSON lists of articles by month.\n",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "description": "The year (e.g. 2016).",
+            "required": true,
+             "type": "number",
+            "x-consoleDefault": "2016"
+          },
+          {
+            "name": "month",
+            "in": "path",
+            "description": "The month number (e.g. 1 for January).",
+            "required": true,
+            "type": "number",
+            "x-consoleDefault": "json"
+          }
+        ],
+        "tags": [
+          "Archive"
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of articles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/definitions\/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Article": {
+    }
+  },
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "query"
+    }
+  }
+}
