@@ -38,39 +38,83 @@ Here is a portion of a sample JSON response:
         },
         "docs": [
             {
-                "web_url": "http://fifthdown.blogs.nytimes.com/2012/01/02/super-bowl-advertising-sells-out/",
-                "snippet": "For the Feb. 5 game in Indianapolis, NBC said it sold all of its 30-second ads, at an average of $3.5 million, by Thanksgiving.",
+                "web_url": "http://opinionator.blogs.nytimes.com/2012/01/02/it-costs-more-but-is-it-worth-more/",
+                "snippet": "Before paying for an expensive cancer treatment, Medicare should demand evidence that it’s more effective than cheaper options.",
                 "lead_paragraph": null,
-                "abstract": "For the Feb. 5 game in Indianapolis, NBC said it sold all of its 30-second ads, at an average of $3.5 million, by Thanksgiving.",
+                "abstract": "Before paying for an expensive cancer treatment, Medicare should demand evidence that it’s more effective than cheaper options.",
                 "print_page": null,
                 "blog": [],
                 "source": "The New York Times",
-                "multimedia": [],
+                "multimedia": [
+                    {
+                        "width": 190,
+                        "url": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-thumbWide.jpg",
+                        "height": 126,
+                        "subtype": "wide",
+                        "legacy": {
+                            "wide": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-thumbWide.jpg",
+                            "wideheight": "126",
+                            "widewidth": "190"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "width": 600,
+                        "url": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-articleLarge-v2.jpg",
+                        "height": 400,
+                        "subtype": "xlarge",
+                        "legacy": {
+                            "xlargewidth": "600",
+                            "xlarge": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-articleLarge-v2.jpg",
+                            "xlargeheight": "400"
+                        },
+                        "type": "image"
+                    },
+                    {
+                        "width": 75,
+                        "url": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-thumbStandard.jpg",
+                        "height": 75,
+                        "subtype": "thumbnail",
+                        "legacy": {
+                            "thumbnailheight": "75",
+                            "thumbnail": "images/2012/01/02/opinion/02ZEKE-img/02ZEKE-img-thumbStandard.jpg",
+                            "thumbnailwidth": "75"
+                        },
+                        "type": "image"
+                    }
+                ],
                 "headline": {
-                    "main": "Super Bowl Advertising Sells Out",
-                    "kicker": "The Fifth Down"
+                    "main": "It Costs More, but Is It Worth More?",
+                    "kicker": "Opinionator"
                 },
                 "keywords": [],
-                "pub_date": "2012-01-02T23:46:50Z",
+                "pub_date": "2012-01-02T22:18:41Z",
                 "document_type": "blogpost",
                 "news_desk": null,
-                "section_name": "Sports",
-                "subsection_name": "Pro Football",
+                "section_name": "Opinion",
+                "subsection_name": null,
                 "byline": {
                     "person": [
                         {
+                            "firstname": "Ezekiel",
+                            "middlename": "J.",
+                            "lastname": "EMANUEL",
+                            "rank": 1,
+                            "role": "reported",
+                            "organization": ""
+                        },
+                        {
                             "organization": "",
                             "role": "reported",
-                            "firstname": "Richard",
-                            "rank": 1,
-                            "lastname": "SANDOMIR"
+                            "firstname": "Steven",
+                            "rank": 2
                         }
                     ],
-                    "original": "By RICHARD SANDOMIR"
+                    "original": "By EZEKIEL J. EMANUEL and STEVEN D. PEARSON"
                 },
                 "type_of_material": "Blog",
-                "_id": "54f325df38f0d8529ba360a3",
-                "word_count": "345",
+                "_id": "54f325e938f0d8529ba360a5",
+                "word_count": "904",
                 "slideshow_credits": null
             },
             ...
