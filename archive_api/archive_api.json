@@ -34,7 +34,8 @@
             "in": "path",
             "description": "The year (e.g. 2016).",
             "required": true,
-            "type": "number",
+            "type": "integer",
+            "format": "int32",
             "x-consoleDefault": "2016"
           },
           {
@@ -42,7 +43,8 @@
             "in": "path",
             "description": "The month number (e.g. 1 for January).",
             "required": true,
-            "type": "number",
+            "type": "integer",
+            "format": "int32",
             "x-consoleDefault": "1"
           }
         ],
