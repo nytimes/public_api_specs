@@ -51,14 +51,33 @@
         ],
         "responses": {
           "200": {
-            "description": "An array of articles",
+            "description": "The docs requested by the article search.",
             "schema": {
               "type": "object",
               "properties": {
-                "results": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#\/definitions\/Article"
+                "response": {
+                  "type": "object",
+                  "properties": {
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Doc"
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "hits": {
+                          "type": "integer"
+                        },
+                        "time": {
+                          "type": "integer"
+                        },
+                        "offset": {
+                          "type": "integer"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -69,7 +88,129 @@
     }
   },
   "definitions": {
-    "Article": {
+    "Doc": {
+      "type": "object",
+      "properties": {
+        "web_url": {
+          "type": "string"
+        },
+        "snippet": {
+          "type": "string"
+        },
+        "lead_paragraph": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "print_page": {
+          "type": "string"
+        },
+        "blog": {
+          "type": "array"
+        },
+        "source": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "string"
+            },
+            "kicker": {
+              "type": "string"
+            }
+          }
+        },
+        "keywords": {
+          "type": "object",
+          "properties": {
+            "rank": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "pub_date": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "news_desK": {
+          "type": "string"
+        },
+        "section_name": {
+          "type": "string"
+        },
+        "subsection_name": {
+          "type": "string"
+        },
+        "byline": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "original": {
+              "type": "string"
+            },
+            "person": {
+              "type": "array"
+            }
+          }
+        },
+        "type_of_material": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "word_count": {
+          "type": "string"
+        },
+        "slideshow_credits": {
+          "type": "string"
+        },
+        "multimedia": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subtype": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "copyright": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {
