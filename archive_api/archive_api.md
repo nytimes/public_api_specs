@@ -1,7 +1,7 @@
 The Archive API
 ===============
 
-The **Archive API** provides JSON lists of NYT articles by month.
+The **Archive API** provides lists of NYT articles by month going back to 1851.
 
 **Note:** In this document, curly braces { } indicate required items. Square
 brackets [ ] indicate optional items or placeholders.
@@ -11,20 +11,41 @@ Usage is limited to 2,000 requests per day (rate limits are subject to change).
 Please read and agree to the [API Terms of Use](<http://developer.nytimes.com/tou>) and
 the [Attribution Guidelines](<http://developer.nytimes.com/attribution>) before you proceed.
 
-Requests
---------
+The API uses a [RESTful](<http://en.wikipedia.org/wiki/Representational_State_Transfer>) style.
 
-The Archive API uses a [RESTful](<http://en.wikipedia.org/wiki/Representational_State_Transfer>) style.
-For general tips on creating a request URI, see [Constructing a Request](<http://developer.nytimes.com/docs/reference/requests>).
+
+**Base URI**
+
+The API is simple, just pass in the year and month and your API key.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/archive/v1/{year}/{month}.json?api-key={your-api-key}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-###
+**HTTP method**
 
-Examples
---------
+GET
+
+**Response format**
+
+JSON
+
+### REQUESTS
+
+NYT articles for November, 2016.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/archive/v1/2016/11.json?api-key={your-api-key}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NYT articles for December, 1851.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+http://api.nytimes.com/svc/archive/v1/1851/12.json?api-key={your-api-key}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+### RESPONSES
 
 Here is a portion of a sample JSON response:
 
