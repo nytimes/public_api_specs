@@ -1,9 +1,8 @@
-
 {
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Archive API V1",
+    "title": "Archive API",
     "description": "Alpha.  The Archive API provides JSON lists of NYT articles by month.",
     "logo": {
       "url": "img/logo_api_archive_150x150.png"
@@ -25,7 +24,7 @@
     }
   ],
   "paths": {
-    "\/{year}/{month}.json": {
+    "/{year}/{month}.json": {
       "get": {
         "summary": "Archive API",
         "description": "The Archive API provides JSON lists of articles by month.\n",
@@ -35,7 +34,7 @@
             "in": "path",
             "description": "The year (e.g. 2016).",
             "required": true,
-             "type": "number",
+            "type": "number",
             "x-consoleDefault": "2016"
           },
           {
@@ -44,7 +43,7 @@
             "description": "The month number (e.g. 1 for January).",
             "required": true,
             "type": "number",
-            "x-consoleDefault": "json"
+            "x-consoleDefault": "1"
           }
         ],
         "tags": [
