@@ -1,225 +1,231 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "Archive API",
-    "description": "Alpha.  The Archive API provides lists of NYT articles by month going back to 1851.",
-    "logo": {
-      "url": "img/logo_api_archive_150x150.png"
-    }
-  },
-  "host": "api.nytimes.com",
-  "schemes": [
-    "http",
-    "https"
-  ],
-  "basePath": "/svc/archive/v1",
-  "produces": [
-    "application/json"
-  ],
-  "security": [
-    {
-      "apikey": [
-      ]
-    }
-  ],
-  "paths": {
-    "/{year}/{month}.json": {
-      "get": {
-        "summary": "Archive API",
-        "description": "The Archive API provides lists of NYT articles by month going back to 1851.\n",
-        "parameters": [
-          {
-            "name": "year",
-            "in": "path",
-            "description": "The year (e.g. 2016).",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "x-consoleDefault": "2016"
-          },
-          {
-            "name": "month",
-            "in": "path",
-            "description": "The month number (e.g. 1 for January).",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "x-consoleDefault": "1"
-          }
-        ],
-        "tags": [
-          "Archive"
-        ],
-        "responses": {
-          "200": {
-            "description": "The docs requested by the article search.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "response": {
-                  "type": "object",
-                  "properties": {
-                    "docs": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/Doc"
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "hits": {
-                          "type": "integer"
-                        },
-                        "time": {
-                          "type": "integer"
-                        },
-                        "offset": {
-                          "type": "integer"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Archive API",
+        "description": "Alpha.  The Archive API provides lists of NYT articles by month going back to 1851.",
+        "logo": {
+            "url": "img/logo_api_archive_150x150.png"
         }
-      }
-    }
-  },
-  "definitions": {
-    "Doc": {
-      "type": "object",
-      "properties": {
-        "web_url": {
-          "type": "string"
-        },
-        "snippet": {
-          "type": "string"
-        },
-        "lead_paragraph": {
-          "type": "string"
-        },
-        "abstract": {
-          "type": "string"
-        },
-        "print_page": {
-          "type": "string"
-        },
-        "blog": {
-          "type": "array"
-        },
-        "source": {
-          "type": "string"
-        },
-        "headline": {
-          "type": "object",
-          "properties": {
-            "main": {
-              "type": "string"
-            },
-            "kicker": {
-              "type": "string"
+    },
+    "host": "api.nytimes.com",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "basePath": "/svc/archive/v1",
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+        {
+            "apikey": [
+            ]
+        }
+    ],
+    "paths": {
+        "/{year}/{month}.json": {
+            "get": {
+                "summary": "Archive API",
+                "description": "The Archive API provides lists of NYT articles by month going back to 1851.\n",
+                "parameters": [
+                    {
+                        "name": "year",
+                        "in": "path",
+                        "description": "The year (e.g. 2016).",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum" : "1851",
+                        "maximum" : "2030",
+                        "default" : "2016",
+                        "x-consoleDefault": "2016"
+                    },
+                    {
+                        "name": "month",
+                        "in": "path",
+                        "description": "The month number (e.g. 1 for January).",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum" : "1",
+                        "maximum" : "12",
+                        "default" : "1",
+                        "x-consoleDefault": "1"
+                    }
+                ],
+                "tags": [
+                    "Archive"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The docs requested by the article search.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "response": {
+                                    "type": "object",
+                                    "properties": {
+                                        "docs": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/Doc"
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "hits": {
+                                                    "type": "integer"
+                                                },
+                                                "time": {
+                                                    "type": "integer"
+                                                },
+                                                "offset": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
-        },
-        "keywords": {
-          "type": "object",
-          "properties": {
-            "rank": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "value": {
-              "type": "string"
-            }
-          }
-        },
-        "pub_date": {
-          "type": "string"
-        },
-        "document_type": {
-          "type": "string"
-        },
-        "news_desK": {
-          "type": "string"
-        },
-        "section_name": {
-          "type": "string"
-        },
-        "subsection_name": {
-          "type": "string"
-        },
-        "byline": {
-          "type": "object",
-          "properties": {
-            "organization": {
-              "type": "string"
-            },
-            "original": {
-              "type": "string"
-            },
-            "person": {
-              "type": "array"
-            }
-          }
-        },
-        "type_of_material": {
-          "type": "string"
-        },
-        "_id": {
-          "type": "string"
-        },
-        "word_count": {
-          "type": "string"
-        },
-        "slideshow_credits": {
-          "type": "string"
-        },
-        "multimedia": {
-          "type": "array",
-          "items": {
+        }
+    },
+    "definitions": {
+        "Doc": {
             "type": "object",
             "properties": {
-              "url": {
-                "type": "string"
-              },
-              "format": {
-                "type": "string"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "type": {
-                "type": "string"
-              },
-              "subtype": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "copyright": {
-                "type": "string"
-              }
+                "web_url": {
+                    "type": "string"
+                },
+                "snippet": {
+                    "type": "string"
+                },
+                "lead_paragraph": {
+                    "type": "string"
+                },
+                "abstract": {
+                    "type": "string"
+                },
+                "print_page": {
+                    "type": "string"
+                },
+                "blog": {
+                    "type": "array"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "headline": {
+                    "type": "object",
+                    "properties": {
+                        "main": {
+                            "type": "string"
+                        },
+                        "kicker": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "keywords": {
+                    "type": "object",
+                    "properties": {
+                        "rank": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "pub_date": {
+                    "type": "string"
+                },
+                "document_type": {
+                    "type": "string"
+                },
+                "news_desK": {
+                    "type": "string"
+                },
+                "section_name": {
+                    "type": "string"
+                },
+                "subsection_name": {
+                    "type": "string"
+                },
+                "byline": {
+                    "type": "object",
+                    "properties": {
+                        "organization": {
+                            "type": "string"
+                        },
+                        "original": {
+                            "type": "string"
+                        },
+                        "person": {
+                            "type": "array"
+                        }
+                    }
+                },
+                "type_of_material": {
+                    "type": "string"
+                },
+                "_id": {
+                    "type": "string"
+                },
+                "word_count": {
+                    "type": "string"
+                },
+                "slideshow_credits": {
+                    "type": "string"
+                },
+                "multimedia": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "format": {
+                                "type": "string"
+                            },
+                            "height": {
+                                "type": "integer"
+                            },
+                            "width": {
+                                "type": "integer"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "subtype": {
+                                "type": "string"
+                            },
+                            "caption": {
+                                "type": "string"
+                            },
+                            "copyright": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
+    },
+    "securityDefinitions": {
+        "apikey": {
+            "type": "apiKey",
+            "name": "api-key",
+            "in": "query"
+        }
     }
-  },
-  "securityDefinitions": {
-    "apikey": {
-      "type": "apiKey",
-      "name": "api-key",
-      "in": "query"
-    }
-  }
 }
