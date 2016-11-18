@@ -30,6 +30,7 @@ GET
 
 JSON
 
+
 ### REQUESTS
 
 NYT articles for November, 2016.
