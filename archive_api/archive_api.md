@@ -38,10 +38,10 @@ NYT articles for November, 2016.
 http://api.nytimes.com/svc/archive/v1/2016/11.json?api-key={your-api-key}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NYT articles for December, 1851.
+NYT articles for September, 1851.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-http://api.nytimes.com/svc/archive/v1/1851/12.json?api-key={your-api-key}
+http://api.nytimes.com/svc/archive/v1/1851/9.json?api-key={your-api-key}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -142,7 +142,7 @@ Here is a portion of a sample JSON response:
         ]
     },
     "status": "OK",
-    "copyright": "Copyright (c) 2013 The New York Times Company.  All Rights Reserved."
+    "copyright": "Copyright (c) 2016 The New York Times Company.  All Rights Reserved."
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
