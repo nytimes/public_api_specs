@@ -3,7 +3,7 @@
     "info": {
         "version": "1.0.0",
         "title": "Archive API",
-        "description": "Alpha.  The Archive API provides lists of NYT articles by month going back to 1851.",
+        "description": "The Archive API provides lists of NYT articles by month going back to 1851.",
         "logo": {
             "url": "img/logo_api_archive_150x150.png"
         }
@@ -27,7 +27,7 @@
         "/{year}/{month}.json": {
             "get": {
                 "summary": "Archive API",
-                "description": "The Archive API provides lists of NYT articles by month going back to 1851.\n",
+                "description": "The Archive API provides lists of NYT articles by month going back to 1851.  Simply pass in the year and month you want and it returns a JSON object with all articles for that month.\n",
                 "parameters": [
                     {
                         "name": "year",
@@ -59,7 +59,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The docs requested by the article search.",
+                        "description": "The docs requested.",
                         "schema": {
                             "type": "object",
                             "properties": {
