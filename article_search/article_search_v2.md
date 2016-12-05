@@ -21,6 +21,16 @@ field-nameB:("value2" "value3"). `For a list of all fields you can filter on,
 see the [Filter Query
 Fields](<http://developer.nytimes.com/docs/read/article_search_api_v2#filters-fields>) table.
 
+
+**Pagination**
+
+The Article Search API returns a max of 10 results at a time.
+The meta node in the response contains the total number of matches ("hits") and the current offset.
+Use the page query parameter to paginate thru results (page=0 for results 1-10, page=1 for 11-20, ...).
+You can paginate thru up to 100 pages (1,000 results).
+If you get too many results try filtering by date range.
+
+
 **Filter Query Examples**
 
 Restrict your search to articles with The New York Times as the source:
