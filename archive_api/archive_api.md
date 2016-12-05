@@ -2,8 +2,11 @@ The Archive API
 ===============
 
 The **Archive API** provides lists of NYT articles by month going back to 1851.
+Its response fields are the same as the **Article Search API**.
+The **Archive API** is very useful if you want to build your own database of NYT article metadata.
+You simply pass the API the year and month you want and it returns a JSON object with all articles for that month.
 
-**Note:** In this document, curly braces { } indicate required items. Square
+**Note:** In this document, curly braces { } indicate required items. Square
 brackets [ ] indicate optional items or placeholders.
 
 To use the Archive API, you must [sign up for an API key](<http://developer.nytimes.com/apps/register>).
@@ -16,7 +19,8 @@ The API uses a [RESTful](<http://en.wikipedia.org/wiki/Representational_State_Tr
 
 **Base URI**
 
-The API is simple, just pass in the year and month and your API key.
+The API is simple, just pass in the year and month and your API key and it returns a JSON object with all articles for that month.
+The response can be big (~20 megabytes) and contain thousands of articles, depending on the year and month.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/archive/v1/{year}/{month}.json?api-key={your-api-key}
