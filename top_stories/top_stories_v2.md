@@ -10,7 +10,7 @@ brackets [ ] indicate optional items or placeholders.
 To use the Top Stories API, you must [sign up for an API
 key](<http://developer.nytimes.com/apps/register>). Usage is limited to 5,000
 requests per day (rate limits are subject to change). Please read and agree to
-the [API Terms of Use](<http://developer.nytimes.com/Api_terms_of_use>) and
+the [API Terms of Use](<http://developer.nytimes.com/tou>) and
 the [Attribution Guidelines](<http://developer.nytimes.com/attribution>) before
 you proceed.
 
