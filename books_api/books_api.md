@@ -35,14 +35,12 @@ JSON (`.json`, default), JSONP (`.jsonp`)
 
 ## Requests
 
-There are five main requests types:
+There are four main requests types:
 
  * Get Best Sellers List Details 
- * Get Overview of Best Sellers Lists** ( *overview.json* )
- * Get Best Sellers List Names** ( *names.json* )
- * Get Book's Best Sellers List History** ( *best-sellers/history.json* )
- * Get Age Groups** ( *age-groups.json* )
-
+ * Get Overview of Best Sellers Lists
+ * Get Best Sellers List Names
+ * Get Book's Best Sellers List History
 
 
 ### Get Best Sellers List Details
@@ -52,11 +50,11 @@ The details service lets you get a specific Best Sellers list's details.
 `/svc/books/v3/lists/current/{date}/{list-name}.{format}`
 
 You need to specify the list's name and either the published date or "current" as the date.
+The list names need to be encoded (lower case with apostrophes removed and spaces replaced with hyphens).
 
 `/svc/books/v3/lists/current/hardcover-fiction.json`
 
 `/svc/books/v3/lists/2016-12-11/mass-market-paperback.json`
-
 
 Optional query parameters include sort-by, sort-order and offset (which needs to be multiple of 20).
 
@@ -83,12 +81,12 @@ When using JSONP, you'll need to provide a callback function name.
 `/svc/books/v3/lists/overview.jsonp?callback=nyt_overview_func`
 
 
-
-
 ### Get Best Sellers List Names
 The names service returns a list of Best Sellers list names.
 It includes in the response the type of list (weekly or monthly) and when it was first published and last published.
-Lists are added and removed over time.
+Lists have been added and removed over time.
+For example the Food and Diet list was added in 2013 and the Children’s Chapter Books list was removed in 2012.
+The response also includes the *list_name_encoded* which you use when calling the details service.
 
 `/svc/books/v3/lists/names.json`
 
@@ -98,7 +96,25 @@ The Best Sellers history service returns books and their history on the NYT Best
 
 `/svc/books/v3/lists/best-sellers/history.json`
 
-Query parameters inlcude: author, isbn, title, sort-by, sort-order, and offset.
+You can search for books by author, ISBN or title using the aptly named query parameters author, isbn, and title.
+
+`/svc/books/v3/lists/best-sellers/history.json?isbn=9780143034759`
+
+Use the sort-by query parameter to choose the field to sort by.
+The options are: bestsellers-date, date, isbn, list, list-name, published-date, rank, rank-last-week, title, and weeks-on-list.
+Use the sort-order query parameter to choose the sort direction. Either asc or desc for ascending or descending.
+When searching by ISBN, the default sort-by value is isbn.
+
+`/svc/books/v3/lists/best-sellers/history.json?author=John%20Grisham&sort-by=title&sort-order=desc`
+
+The API returns 20 results at a time.
+The total number of results is returned in the *num_results* field.
+Use the offset query parameter to paginate thru results.
+It must be a multiple of 20.
+An offset of 0 gets the first 20 results.
+An offset of 20 gets the next 20 results.
+
+`/svc/books/v3/lists/best-sellers/history.json?author=John%20Grisham?offset=20`
 
 
 ### Get Age Groups
@@ -111,16 +127,6 @@ The age groups service returns a list of age groups.
 
 An HTTP response code of 200 (OK) is returned for all requests that are successfully understood and processed.
 
-### RESULT SETS
-
--   For best-seller history requests that search by `ISBN`, the
-    default `sort-by` value is `ISBN`. For all other best-seller history
-    requests, the default `sort-by` value is `title`.
-    For list searches, the default `sort-by` value is `rank`.
-
--   The service returns 20 results at a time. Use the `offset` parameter to page
-    through the results. (For best-seller history requests, the maximum number
-    of results is 20; the `offset` parameter is not available.)
 
 ## Examples
 
