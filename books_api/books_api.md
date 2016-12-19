@@ -60,7 +60,7 @@ Optional query parameters include sort-by, sort-order and offset (which needs to
 
 When using JSONP, you'll need to provide a callback function name.
 
-`/svc/books/v3/lists/current/hardcover-nonfiction.jsonp?nyt_hnf_func`
+`/svc/books/v3/lists/current/hardcover-nonfiction.jsonp?callback=nyt_hnf_func`
 
 
 ### Get Overview of Best Sellers Lists
