@@ -4,7 +4,7 @@ The Top Stories API
 The Top Stories API provides JSON and JSONP lists of articles and associated
 images by section.
 
-**Note:** In this document, curly braces { } indicate required items. Square
+**Note:** In this document, curly braces { } indicate required items. Square
 brackets [ ] indicate optional items or placeholders.
 
 To use the Top Stories API, you must [sign up for an API
@@ -18,15 +18,27 @@ Requests
 --------
 
 The Top Stories API uses
-a [RESTful](<http://en.wikipedia.org/wiki/Representational_State_Transfer>) style.
-For general tips on creating a request URI, see [Constructing a
+a [RESTful](<http://en.wikipedia.org/wiki/Representational_State_Transfer>) style.
+For general tips on creating a request URI, see [Constructing a
 Request](<http://developer.nytimes.com/docs/reference/requests>).
+
+
+Usage
+-----
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/topstories/v1/{section}.{response-format}?api-key={your-api-key}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-###  
+*section* - The section name. The possible values are: home, arts, automobiles, books, business, fashion, food, health,
+  insider, magazine, movies, national, nyregion, obituaries, opinion, politics, realestate,
+  science, sports, sundayreview, technology, theater, tmagazine, travel, upshot, and world.
+ 
+*response-format* - The response format, either json or jsonp.
+  With jsonp the callback is set to the section name and 'TopStoriesCallback' (e.g. 'homeTopStoriesCallback').
+
+*api-key* - Your API key.
+
 
 Examples
 --------
@@ -110,4 +122,3 @@ constant. Some vary depending on whether the image is landscape or portrait. 
 | mediumThreeByTwo210 |       | 210    |
 | superJumbo          |       |        |
 
- 
