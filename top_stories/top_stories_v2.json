@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "2.0.0",
-    "title": "Top Stories V2",
-    "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.",
+    "title": "Top Stories",
+    "description": "The Top Stories API provides lists of articles and associated images by section.",
     "logo": {
       "url": "img/logo_api_top_stories_150x150.png"
     }
@@ -28,7 +28,7 @@
     "\/{section}.{format}": {
       "get": {
         "summary": "Top Stories",
-        "description": "The Top Stories API provides JSON and JSONP lists of articles and associated images by section.\n",
+        "description": "The Top Stories API returns a list of articles and associated images currently on the specified section.  Support JSON and JSONP.\n",
         "parameters": [
           {
             "name": "section",
