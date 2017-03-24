@@ -1,17 +1,17 @@
 The Top Stories API
 ===================
 
-The Top Stories API provides JSON and JSONP lists of articles and associated
-images by section.
+The Top Stories API returns lists of articles and associated images that are currently on the specified section front.
+The API supports JSON and JSONP.
 
 **Note:** In this document, curly braces { } indicate required items. Square
 brackets [ ] indicate optional items or placeholders.
 
-To use the Top Stories API, you must [sign up for an API
-key](<http://developer.nytimes.com/apps/register>). Usage is limited to 5,000
+To use the Top Stories API, you must [sign up for an API
+key](<http://developer.nytimes.com/apps/register>). Usage is limited to 1,000
 requests per day (rate limits are subject to change). Please read and agree to
-the [API Terms of Use](<http://developer.nytimes.com/tou>) and
-the [Attribution Guidelines](<http://developer.nytimes.com/attribution>) before
+the [API Terms of Use](<http://developer.nytimes.com/tou>) and
+the [Attribution Guidelines](<http://developer.nytimes.com/attribution>) before
 you proceed.
 
 Requests
@@ -27,7 +27,7 @@ Usage
 -----
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-http://api.nytimes.com/svc/topstories/v1/{section}.{response-format}?api-key={your-api-key}
+http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *section* - The section name. The possible values are: home, arts, automobiles, books, business, fashion, food, health,
@@ -109,10 +109,10 @@ Supported Multimedia Options
 
 Each result, if available, includes a multimedia payload. We include up to 5
 image sizes, whichever are available for that article. For almost all of
-results, they will all be there. 
+results, they will all be there.
 
 Those image sizes are as follows, with the width and height if those are
-constant. Some vary depending on whether the image is landscape or portrait. 
+constant. Some vary depending on whether the image is landscape or portrait.
 
 | Image Name          | Width | Height |
 |---------------------|-------|--------|
