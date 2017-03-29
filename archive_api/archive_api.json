@@ -3,7 +3,7 @@
     "info": {
         "version": "1.0.0",
         "title": "Archive API",
-        "description": "The Archive API provides lists of NYT articles by month going back to 1851.",
+        "description": "The Archive API provides lists of NYT articles by month going back to 1851.  You can use it to build your own local database of NYT article metadata.",
         "logo": {
             "url": "img/logo_api_archive_150x150.png"
         }
