@@ -590,9 +590,9 @@ q=obama&facet_field=source&begin_date=20120101&end_date=20121231
 q=obama&facet_field=source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can force facet counts to respect filters by setting `facet_filter=true`.
+You can force facet counts to respect filters by setting `facet_filter=true`.
 Facet counts will be restricted based on any filters you have specified (this
-includes both explicit filter queries set using the `fq` parameter and implicit
+includes both explicit filter queries set using the `fq` parameter and implicit
 filters like `begin_date`).
 
 The facet array in the response to the
@@ -934,4 +934,13 @@ Here is a portion of a sample JSON response to the second example:
     }
 
 }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+**Limit Fields in Response**
+
+You can limit the number fields returned in the response with the `fl` parameter.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ &fl=web_url
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
