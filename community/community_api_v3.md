@@ -82,15 +82,17 @@ http://api.nytimes.com/svc/community/{version}/user-content/user.json?api-key={y
 
 ### COMMENTS BY URL
 
-To retrieve comments associated with a specific NYTimes.com URL, use the
+To retrieve editor selected comments associated with a specific NYTimes.com URL, use the
 following URI structure:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/community/{version}/user-content/url.json?api-key={your-API-key}&url={url}[&offset=int]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the URL you specify is a movie overview page, readers' reviews of the movie
-will be returned.
+
+### Pagination
+
+Use the offset query parameter to paginate thru the results, 25 comments at a time.  Use offset=0 to get the first 25 comments, offset=25 to get the next 25 comments, ...
 
  
 
