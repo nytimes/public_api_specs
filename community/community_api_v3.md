@@ -1,6 +1,8 @@
 The Community API v3
 ====================
 
+NOTE: The Community API is deprecated.  We are currently working on a new API to replace it.
+
 With the Community API, you can get user-generated NYTimes.com content. The
 current release includes article comments and readers' reviews of movies. (Other
 types of user-generated content will be available in a later version.)
@@ -82,7 +84,7 @@ http://api.nytimes.com/svc/community/{version}/user-content/user.json?api-key={y
 
 ### COMMENTS BY URL
 
-To retrieve editor selected comments associated with a specific NYTimes.com URL, use the
+To comments associated with a specific NYTimes.com URL, use the
 following URI structure:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
