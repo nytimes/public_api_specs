@@ -24,7 +24,7 @@
     }
   ],
   "paths": {
-    "/timestags.json": {
+    "/timestags": {
       "get": {
         "parameters": [
           {
