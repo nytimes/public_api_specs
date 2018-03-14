@@ -207,7 +207,7 @@
         "document_type": {
           "type": "string"
         },
-        "news_desK": {
+        "news_desk": {
           "type": "string"
         },
         "section_name": {
