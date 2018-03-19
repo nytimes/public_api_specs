@@ -1,5 +1,4 @@
-The Movie Reviews API
-=====================
+# The Movie Reviews API
 
 With the Movie Reviews API, you can search New York Times movie reviews by
 keyword and get lists of NYT Critics' Picks.
@@ -25,51 +24,51 @@ GET
 
 JSON (`.json`, default)
 
- 
 
-Examples
---------
 
-These examples use an `.json` extension for illustration purposes. Also, these
-examples do not include the required `api-key` parameter. Be sure to include
+## Examples
+
+These examples use an `.json` extension for illustration purposes. Also, these
+examples do not include the required `api-key` parameter. Be sure to include
 your API key in your request.
 
 ### REQUESTS
 
-**Search Reviews by Keyword**  
-Search for the keyword *big*, with additional limiting parameters:
+**Search Reviews by Keyword**
+Search for the keyword *big*, with additional limiting parameters:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/movies/v2/reviews/search.json?query=big&opening-date=1930-01-01;2000-01-01
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Reviews and NYT Critics' Picks**  
+**Reviews and NYT Critics' Picks**
 Most recent NYT Critics' Picks, results 41-60:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-http://api.nytimes.com/svc/movies/v2/reviews/search.json?critics-pick=Y?order=by-date&offset=40
+http://api.nytimes.com/svc/movies/v2/reviews/search.json?critics-pick=Y&order=by-date&offset=40
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-**Reviewer Details**  
+**Reviewer Details**
 Biographical information for A. O. Scott:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 http://api.nytimes.com/svc/movies/v2/critics/A.%20O.%20Scott.json
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
+
 
 ### RESPONSES
 
 Here is a portion of a JSON response to the
-first [example](<http://developer.nytimes.com/docs/movie_reviews_api/#h3-example-request>) (search
-on keyword *big*):
+first [example](<http://developer.nytimes.com/docs/movie_reviews_api/#h3-example-request>) (search
+on keyword *big*):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {
   "status":"OK",
   "copyright":"Copyright (c) 2008 The New York Times Company.  All Rights Reserved.",
+  "has_more":false
   "num_results":8,
   "results":[
      {
@@ -95,3 +94,8 @@ on keyword *big*):
   ]
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+### Pagination
+
+Use *offset* to paginate thru results, 20 at a time (offset=0, offset=20, ...).  The *has_more* field indicates if there are more results to get.
