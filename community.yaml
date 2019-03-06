@@ -1,0 +1,873 @@
+swagger: '2.0'
+basePath: /svc/community/v3
+host: api.nytimes.com
+schemes:
+  - http
+info:
+  version: 3.0.0
+  title: Community API
+  description: |
+    Get access to comments from registered users on New York Times articles. NOTE: This API is deprecated.
+    
+    The Community API v3
+    ====================
+
+    NOTE: The Community API is deprecated.  We are currently working on a new API to replace it. With the Community API, you can get user-generated NYTimes.com content. The current release includes article comments and readers' reviews of movies. (Other types of user-generated content will be available in a later version.)
+
+    **The Community API at a Glance**
+
+    **Base URI**
+
+    `http://api.nytimes.com/svc/community/v3/user-content/{resource-type}`
+
+    **Scope**
+
+    NYTimes.com user-generated content, currently comments on
+    articles.<http://dotearth.blogs.nytimes.com/> For movies, "comments" are
+    readers' reviews.
+
+    **HTTP method**
+
+    GET
+
+    **Response formats**
+
+    JSON
+
+    To use the Community API, you must [sign up for an API key](</signup>). Usage is limited to 5000 requests per day (rate limits are subject to change). Please read and agree to the [API Terms of Use](</tau>) and the [Attribution Guidelines](</attribution>) before you proceed.
+
+
+    ### Pagination
+
+    Use the offset query parameter to paginate thru the results, 25 comments at a time.  Use offset=0 to get the first 25 comments, offset=25 to get the next 25 comments
+
+     
+    Responses
+    ---------
+
+    An HTTP response code of 200 (OK) is returned for all requests that are
+    successfully understood and processed. See the [Errors](<http://developer.nytimes.com/docs/community_api/The_Community_API_v3/#h2-errors>) section
+    for additional response codes.
+
+    ### DATA RETURNED
+
+    -   All comment records include the URL to the Times article on which the
+        comments were made.
+
+    -   For movie overview URLs, the "comments" returned are readers' reviews of the movie.
+
+    -   Date fields are in [Unix/UTC format](<http://en.wikipedia.org/wiki/Unix_time>).
+
+
+paths:
+  /user-content/recent.json:
+    parameters: []
+    get:
+      summary: Recent User Comments
+      description: |
+        To retrieve the most recent user comments, use the following URI structure:
+
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         http://api.nytimes.com/svc/community/v3/user-content/recent.json?api-key={your-API-key}[&optional-param1=value1][...]
+      operationId: GET_user-content-recent-json
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              debug:
+                type: object
+                properties:
+                  version:
+                    type: number
+              status:
+                type: string
+              copyright:
+                type: string
+              results:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        assetID:
+                          type: integer
+                        commentID:
+                          type: integer
+                        parentID:
+                          type: 'null'
+                        statusID:
+                          type: integer
+                        commentSequence:
+                          type: integer
+                        commentBody:
+                          type: string
+                        commentTitle:
+                          type: string
+                        createDate:
+                          type: string
+                        updateDate:
+                          type: string
+                        approveDate:
+                          type: string
+                        userID:
+                          type: integer
+                        userDisplayName:
+                          type: string
+                        userTitle:
+                          type: string
+                        userURL:
+                          type: string
+                        userLocation:
+                          type: string
+                        editorsSelection:
+                          type: integer
+                        recommendationCount:
+                          type: integer
+                        commentType:
+                          type: string
+                        status:
+                          type: string
+                        asset:
+                          type: object
+                          properties:
+                            assetURL:
+                              type: string
+                            vendorID:
+                              type: string
+                            source:
+                              type: string
+                            assetID:
+                              type: integer
+                            createDate:
+                              type: string
+                            updateDate:
+                              type: string
+                            taxonomy:
+                              type: string
+                            labels:
+                              type: array
+                              items:
+                                type: object
+                            text:
+                              type: array
+                              items:
+                                type: object
+                            properties:
+                              type: object
+                              properties:
+                                comment-list-sort-editors:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                                automoderation-on:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                                reached-max-com-off:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                            all-properties:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                                  properties:
+                                    type: array
+                                    items:
+                                      type: object
+                            assetTitle:
+                              type: string
+                        replies:
+                          type: array
+                          items:
+                            type: object
+                        display_name:
+                          type: string
+                        location:
+                          type: string
+                  totalCommentsReturned:
+                    type: integer
+                  api_timestamp:
+                    type: string
+          examples:
+            application/json:
+              debug:
+                version: 3.1
+              status: OK
+              copyright: Copyright (c) 2016 The New York Times Company.  All Rights Reserved.
+              results:
+                comments:
+                  - assetID: 3449092
+                    commentID: 17912830
+                    parentID: null
+                    statusID: 2
+                    commentSequence: 17912830
+                    commentBody: 'Two things to know about our Governor Kasich. First, he was one of the few Republican governors to accept Obamacare and Medicaid expansion in Ohio, despite the efforts of legislators from his party. Second, as Gail Collins pointed out, he has done everything in his power to eliminate access to safe abortion in Ohio. This will soon include a bill he is expected to sign that will make it illegal for women to have an abortion after learning their fetus has Down''s syndrome. Like most candidates these days, we have to take the good with the bad.'
+                    commentTitle: <br/>
+                    createDate: '1458149421'
+                    updateDate: '1458149469'
+                    approveDate: '1458149469'
+                    userID: 64507566
+                    userDisplayName: DD
+                    userTitle: 'NULL'
+                    userURL: 'NULL'
+                    userLocation: 'Cincinnati, OH'
+                    editorsSelection: 0
+                    recommendationCount: 0
+                    commentType: comment
+                    status: approved
+                    asset:
+                      assetURL: 'http://www.nytimes.com/2016/03/16/opinion/campaign-stops/kasich-the-boulder-between-the-gop.html'
+                      vendorID: MQdKLYFNCfZ7XvixkGz2rw==
+                      source: url
+                      assetID: 3449092
+                      createDate: '1458096538'
+                      updateDate: '1458149477'
+                      taxonomies:
+                        - - taxonomyID: 9188
+                            name: opinion
+                      taxonomy: 'opinion/Kasich, the Boulder Between the G.O.P. and Trump (16collins)'
+                      labels: []
+                      text: []
+                      properties:
+                        comment-list-sort-editors:
+                          groupID: 1
+                          taxonomyID: 364114
+                        automoderation-on:
+                          groupID: 2
+                          taxonomyID: 364114
+                        reached-max-com-off:
+                          groupID: 3
+                          taxonomyID: 9188
+                      all-properties:
+                        - name: no-group
+                          description: Not in a group
+                          properties: []
+                      assetTitle: 'Kasich, the Boulder Between the G.O.P. and Trump (16collins)'
+                    replies: []
+                    display_name: DD
+                    location: 'Cincinnati, OH'
+                totalCommentsReturned: 25
+                api_timestamp: '1458149501'
+      security:
+        - api-key: []
+  /user-content/url.json:
+    parameters: []
+    get:
+      summary: Comments by URL
+      description: |
+        The comments associated with a specific NYTimes.com URL, use the
+        following URI structure:
+
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        http://api.nytimes.com/svc/community/v3/user-content/url.json?api-key={your-API-key}&url={url}[&offset=int]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        You can specify whether to retrieve exact matches or closest stem matches. URL matching is attempted at each segment of the path, as illustrated by the following example:
+
+        First match attempt: 
+          http://www.nytimes.com/2008/10/23/section/article* 
+        Second match attempt: 
+          http://www.nytimes.com/2008/10/23/section/* 
+        Third match attempt: 
+          http://www.nytimes.com/2008/10/23/*
+
+        In result sets, matching URLs are sorted alphabetically.
+      operationId: GET_user-content-url-json
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: url
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              debug:
+                type: object
+                properties:
+                  version:
+                    type: number
+              status:
+                type: string
+              copyright:
+                type: string
+              results:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        commentID:
+                          type: integer
+                        status:
+                          type: string
+                        commentSequence:
+                          type: integer
+                        userID:
+                          type: integer
+                        userDisplayName:
+                          type: string
+                        userLocation:
+                          type: string
+                        userTitle:
+                          type: 'null'
+                        userURL:
+                          type: 'null'
+                        commentTitle:
+                          type: string
+                        commentBody:
+                          type: string
+                        createDate:
+                          type: string
+                        updateDate:
+                          type: string
+                        approveDate:
+                          type: string
+                        recommendations:
+                          type: integer
+                        replyCount:
+                          type: integer
+                        replies:
+                          type: array
+                          items: {}
+                        editorsSelection:
+                          type: boolean
+                        parentID:
+                          type: 'null'
+                        parentUserDisplayName:
+                          type: 'null'
+                        depth:
+                          type: integer
+                        commentType:
+                          type: string
+                        trusted:
+                          type: integer
+                        recommendedFlag:
+                          type: 'null'
+                        reportAbuseFlag:
+                          type: 'null'
+                        permID:
+                          type: string
+                        picURL:
+                          type: string
+                        timespeople:
+                          type: integer
+                        sharing:
+                          type: integer
+                  page:
+                    type: integer
+                  totalCommentsReturned:
+                    type: integer
+                  totalCommentsFound:
+                    type: integer
+                  totalParentCommentsFound:
+                    type: integer
+                  totalParentCommentsReturned:
+                    type: integer
+                  totalReplyCommentsFound:
+                    type: integer
+                  totalReplyCommentsReturned:
+                    type: integer
+                  totalReporterReplyCommentsFound:
+                    type: integer
+                  totalReporterReplyCommentsReturned:
+                    type: integer
+                  totalEditorsSelectionFound:
+                    type: integer
+                  totalEditorsSelectionReturned:
+                    type: integer
+                  totalRecommendationsFound:
+                    type: integer
+                  totalRecommendationsReturned:
+                    type: integer
+                  replyLimit:
+                    type: integer
+                  depthLimit:
+                    type: integer
+                  sort:
+                    type: string
+                  filter:
+                    type: string
+                  callerID:
+                    type: 'null'
+                  api_timestamp:
+                    type: string
+          examples:
+            application/json:
+              debug:
+                version: 3.1
+              status: OK
+              copyright: Copyright (c) 2016 The New York Times Company.  All Rights Reserved.
+              results:
+                comments:
+                  - commentID: 20831
+                    status: approved
+                    commentSequence: 138
+                    userID: 44150303
+                    userDisplayName: byakushi
+                    userLocation: US
+                    userTitle: null
+                    userURL: null
+                    commentTitle: ''
+                    commentBody: 'I have always wondered how much energy US would save if it shut down Vegas? Can you imagine the amount of electricity consumed on the strip, the ice melted for its water supply - all in the name of gambling? That''s the kind of consumerism I would like to see halted. Same goes for all the downtown skylines which cause so much light pollution. Even a simple thing like having an "off" switch in the homes rather than just power outlets would save a lot of energy and hopefully make a huge difference in the "consumption footprint." Can American live with that?<br/><br/>As for the growing economies of China & India: the increased industrialization has also increased environmental pollution in those countries. West has conveniently handed down it''s dirty work to them. And at the same time we have Americans screaming about lost jobs. When will they realize that they can''t have it both ways?<br/><br/>All in all they are acting like spoilt brats who have realized that they are no longer the teacher''s favorite. Is it surprising that other folks hate you for your spoilt ways, at the same time envying how you have it so easy?<br/><br/>'
+                    createDate: '1199309173'
+                    updateDate: '1199322293'
+                    approveDate: '1199322293'
+                    recommendations: 5
+                    replyCount: 0
+                    replies: []
+                    editorsSelection: false
+                    parentID: null
+                    parentUserDisplayName: null
+                    depth: 1
+                    commentType: comment
+                    trusted: 0
+                    recommendedFlag: null
+                    reportAbuseFlag: null
+                    permID: '138'
+                    picURL: 'http://graphics8.nytimes.com/images/apps/timespeople/none.png'
+                    timespeople: 1
+                    sharing: 0
+                page: 1
+                totalCommentsReturned: 25
+                totalCommentsFound: 138
+                totalParentCommentsFound: 138
+                totalParentCommentsReturned: 25
+                totalReplyCommentsFound: 0
+                totalReplyCommentsReturned: 0
+                totalReporterReplyCommentsFound: 0
+                totalReporterReplyCommentsReturned: 0
+                totalEditorsSelectionFound: 13
+                totalEditorsSelectionReturned: 1
+                totalRecommendationsFound: 118
+                totalRecommendationsReturned: 23
+                replyLimit: 3
+                depthLimit: 0
+                sort: oldest
+                filter: ''
+                callerID: null
+                api_timestamp: '1455718117'
+      security:
+        - api-key: []
+  /user-content/by-date.json:
+    parameters: []
+    get:
+      summary: Comments by Date
+      description: |
+        To retrieve comments posted on a specific date, use the following URI structure:
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        http://api.nytimes.com/svc/community/v3/user-content/by-date.json?api-key={your-API-key}&date={YYYY-MM-DD}[&offset=int]
+    
+      operationId: GET_user-content-by-date-json
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: date
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              debug:
+                type: object
+                properties:
+                  version:
+                    type: number
+              status:
+                type: string
+              copyright:
+                type: string
+              results:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        commentID:
+                          type: integer
+                        parentID:
+                          type: 'null'
+                        statusID:
+                          type: integer
+                        lft:
+                          type: integer
+                        rgt:
+                          type: integer
+                        commentSequence:
+                          type: integer
+                        commentBody:
+                          type: string
+                        commentTitle:
+                          type: string
+                        createDate:
+                          type: string
+                        updateDate:
+                          type: string
+                        approveDate:
+                          type: string
+                        userID:
+                          type: integer
+                        userDisplayName:
+                          type: string
+                        userTitle:
+                          type: string
+                        userURL:
+                          type: integer
+                        userLocation:
+                          type: string
+                        editorsSelection:
+                          type: integer
+                        recommendationCount:
+                          type: integer
+                        replyCount:
+                          type: integer
+                        assetID:
+                          type: integer
+                        assetURL:
+                          type: string
+                        status:
+                          type: string
+                        commentType:
+                          type: string
+                        replies:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                  totalCommentsReturned:
+                    type: integer
+                  totalCommentsFound:
+                    type: integer
+                  api_timestamp:
+                    type: string
+          examples:
+            application/json:
+              debug:
+                version: 3.1
+              status: OK
+              copyright: Copyright (c) 2016 The New York Times Company.  All Rights Reserved.
+              results:
+                comments:
+                  - commentID: 17096625
+                    parentID: null
+                    statusID: 2
+                    lft: 42
+                    rgt: 43
+                    commentSequence: 17096625
+                    commentBody: 'We used black eyed peas and kale (couldn&#x27;t find mustard greens), and this recipe is fantastic! With cornbread it was perfect!'
+                    commentTitle: <br/>
+                    createDate: '1451710797'
+                    updateDate: '1451710808'
+                    approveDate: '1451710808'
+                    userID: 72856041
+                    userDisplayName: Sharon
+                    userTitle: 'NULL'
+                    userURL: 72856041
+                    userLocation: <br/>
+                    editorsSelection: 0
+                    recommendationCount: 0
+                    replyCount: 0
+                    assetID: 3444599
+                    assetURL: 'http://cooking.nytimes.com/recipes/1017904'
+                    status: approved
+                    commentType: comment
+                    replies: []
+                totalCommentsReturned: 25
+                totalCommentsFound: 4121
+                api_timestamp: '1458149967'
+      security:
+        - api-key: []
+  /user-content/user.json:
+    parameters: []
+    get:
+      summary: Comments by User
+      description: |
+        To retrieve comments by a specific NYTimes.com user, use the following URI
+        structure:
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        http://api.nytimes.com/svc/community/v3/user-content/user.json?api-key={your-API-key}&userID={<int>}[&offset=<int>][&url={url-to-match}]
+
+      operationId: GET_user-content-user-json
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: userID
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties:
+              debug:
+                type: object
+                properties:
+                  version:
+                    type: number
+              status:
+                type: string
+              copyright:
+                type: string
+              results:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        commentID:
+                          type: integer
+                        status:
+                          type: string
+                        commentSequence:
+                          type: integer
+                        userID:
+                          type: integer
+                        userSubmittedDisplayName:
+                          type: string
+                        userSubmittedTitle:
+                          type: 'null'
+                        userSubmittedURL:
+                          type: 'null'
+                        userSubmittedLocation:
+                          type: string
+                        commentTitle:
+                          type: string
+                        commentBody:
+                          type: string
+                        createDate:
+                          type: string
+                        updateDate:
+                          type: string
+                        approveDate:
+                          type: string
+                        recommendations:
+                          type: integer
+                        replyCount:
+                          type: integer
+                        replies:
+                          type: array
+                          items:
+                            type: object
+                        editorsSelection:
+                          type: boolean
+                        parentID:
+                          type: 'null'
+                        commentType:
+                          type: string
+                        asset:
+                          type: object
+                          properties:
+                            assetURL:
+                              type: string
+                            vendorID:
+                              type: string
+                            source:
+                              type: string
+                            assetID:
+                              type: integer
+                            createDate:
+                              type: string
+                            updateDate:
+                              type: string
+                            taxonomy:
+                              type: string
+                            labels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  labelName:
+                                    type: string
+                                  labelID:
+                                    type: integer
+                            text:
+                              type: array
+                              items:
+                                type: object
+                            properties:
+                              type: object
+                              properties:
+                                comment-list-sort-approvedate-desc:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                                automoderation-off:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                                reached-max-com-on:
+                                  type: object
+                                  properties:
+                                    groupID:
+                                      type: integer
+                                    taxonomyID:
+                                      type: integer
+                            all-properties:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                  description:
+                                    type: string
+                                  properties:
+                                    type: array
+                                    items:
+                                      type: object
+                            assetTitle:
+                              type: string
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                        permid:
+                          type: integer
+                        userDisplayName:
+                          type: 'null'
+                        userTitle:
+                          type: 'null'
+                        userURL:
+                          type: 'null'
+                        userLocation:
+                          type: 'null'
+                        picURL:
+                          type: string
+                  totalCommentsReturned:
+                    type: integer
+                  totalCommentsFound:
+                    type: integer
+                  api_timestamp:
+                    type: string
+          examples:
+            application/json:
+              debug:
+                version: 3.1
+              status: OK
+              copyright: Copyright (c) 2016 The New York Times Company.  All Rights Reserved.
+              results:
+                comments:
+                  - commentID: 4570862
+                    status: approved
+                    commentSequence: 10
+                    userID: 2364811
+                    userSubmittedDisplayName: Jim
+                    userSubmittedTitle: null
+                    userSubmittedURL: null
+                    userSubmittedLocation: NYC
+                    commentTitle: hardcoded comment title
+                    commentBody: time to Google for "cell phone signal blocker"...
+                    createDate: '1316723787'
+                    updateDate: '1316728099'
+                    approveDate: '1316728099'
+                    recommendations: 11
+                    replyCount: 0
+                    replies: []
+                    editorsSelection: false
+                    parentID: null
+                    commentType: comment
+                    asset:
+                      assetURL: 'http://cityroom.blogs.nytimes.com/2011/09/22/cell-phone-service-on-some-subway-platforms-starts-next-week/'
+                      vendorID: P12Rq7kT2AvJyomlFgcylQ==
+                      source: url
+                      assetID: 3267087
+                      createDate: '1316722025'
+                      updateDate: '1319743568'
+                      taxonomies:
+                        - - taxonomyID: 70457
+                            name: blogs
+                      taxonomy: blogs/cityroom/Cellphone Service Coming to the Subway
+                      labels:
+                        - labelName: NYT_Blogs
+                          labelID: 54906
+                      text: []
+                      properties:
+                        comment-list-sort-approvedate-desc:
+                          groupID: 1
+                          taxonomyID: 199832
+                        automoderation-off:
+                          groupID: 2
+                          taxonomyID: 199832
+                        reached-max-com-on:
+                          groupID: 3
+                          taxonomyID: 199832
+                      all-properties:
+                        - name: no-group
+                          description: Not in a group
+                          properties: []
+                      assetTitle: Cellphone Service Coming to the Subway
+                    labels: []
+                    permid: 10
+                    userDisplayName: null
+                    userTitle: null
+                    userURL: null
+                    userLocation: null
+                    picURL: 'http://pimage.timespeople.nytimes.com/2364/811/cropped-2364811.jpg?0.8428952772024576'
+                totalCommentsReturned: 2
+                totalCommentsFound: 2
+                api_timestamp: '1458150045'
+      security:
+        - api-key: []
+definitions: {}
+securityDefinitions:
+  api-key:
+    name: api-key
+    type: apiKey
+    in: query
