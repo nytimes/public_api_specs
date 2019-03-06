@@ -1,0 +1,235 @@
+swagger: '2.0'
+basePath: /svc/movies/v2
+host: api.nytimes.com
+schemes:
+  - https
+info:
+  version: 2.0.0
+  title: Movie Reviews API
+  description: |
+    Search New York Times movie reviews by keyword and filter by Critics' Picks.
+
+    Get movie critic names:
+
+    ```
+    /critics/all.json
+    ```
+
+    Get movie reviews that are critic's pick:
+
+    ```
+    /reviews/picks.json
+    ```
+
+    Get movie reviews with "lebowski" in the title::
+
+    ```
+    /reviews/search.json?query=lebowski
+    ```
+
+    ## Example Call
+    ```
+    https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=godfather&api-key=yourkey
+    ```
+produces:
+  - application/json
+security:
+  - apikey: []
+paths:
+  '/critics/{reviewer}.json':
+    get:
+      summary: Get movie critics name, bio and image.
+      description: |
+        Get movie critics. You can either specify the reviewer name or use "all", "full-time", or "part-time".
+      tags:
+        - Movies
+      parameters:
+        - name: reviewer
+          in: path
+          description: Reviewer name or "all" for all reviewers, "full-time" for full-time reviewers, or "part-time" for part-time reviewers.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Array of movie critics.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Critic'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+  '/reviews/{type}.json':
+    get:
+      summary: Get movie reviews.
+      description: |
+        Get movie reviews.  Can filter to only return Critics' Picks.
+        Supports ordering results by-title, by-publication-date, or by-opening-date.
+        Use offset to paginate thru results, 20 at a time.
+      tags:
+        - Movies
+      parameters:
+        - name: type
+          description: Filter by critics' pick or not.
+          in: path
+          required: true
+          type: string
+          enum:
+            - all
+            - picks
+        - name: offset
+          in: query
+          description: Sets the starting point of the result set.  Needs to be multiple of 20.
+          required: false
+          default: 0
+          type: integer
+        - name: order
+          in: query
+          description: How to order the results.
+          required: false
+          type: string
+          enum:
+            - by-opening-date
+            - by-publication-date
+            - by-title
+      responses:
+        '200':
+          description: Array of movie reviews.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              has_more:
+                type: boolean
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Review'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+  '/reviews/search.json':
+    get:
+      summary: Search for movie reviews.
+      description: |
+        Search for movie reviews.  Supports filtering by Critics' Pick.
+      tags:
+        - Movies
+      responses:
+        '200':
+          description: Array of movie reviews.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              has_more:
+                type: boolean
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Review'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+definitions:
+  Critic:
+    type: object
+    properties:
+      display_name:
+        type: string
+      sort_name:
+        type: string
+      status:
+        type: string
+      bio:
+        type: string
+      seo-nmae:
+        type: string
+      multimedia:
+        type: object
+        properties:
+          resource:
+            type: object
+            properties:
+              type:
+                type: string
+              src:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+              credit:
+                type: string
+  Link:
+    type: object
+    properties:
+      type:
+        type: string
+      url:
+        type: string
+      suggested_link_text:
+        type: string
+  MultiMedia:
+    type: object
+    properties:
+      type:
+        type: string
+      src:
+        type: string
+      width:
+        type: integer
+      height:
+        type: integer
+  Review:
+    type: object
+    properties:
+      display_title:
+        type: string
+      mpaa_rating:
+        type: string
+      critics_pick:
+        type: integer
+      byline:
+        type: string
+      headline:
+        type: string
+      summary_short:
+        type: string
+      publication_date:
+        type: string
+      opening_date:
+        type: string
+      date_updated:
+        type: string
+      link:
+        $ref: '#/definitions/Link'
+      multimedia:
+        $ref: '#/definitions/MultiMedia'
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: api-key
+    in: query
