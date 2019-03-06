@@ -1,0 +1,412 @@
+swagger: '2.0'
+basePath: /svc/mostpopular/v2
+host: api.nytimes.com
+schemes:
+  - https
+info:
+  version: 2.0.0
+  title: Most Popular
+  description: |
+    Provides services for getting the most popular articles on NYTimes.com based on emails, shares, or views.
+
+    Get most emailed articles for the last day:
+    ```
+    /emailed/1.json
+    ```
+
+    Get most shared articles on Facebook for the last day:
+    ```
+    /shared/1/facebook.json
+    ```
+
+    Get most viewed articles for the last seven days:
+    ```
+    /viewed/7.json
+    ```
+
+    ## Example Calls
+    ```
+    https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=yourkey
+    ```
+
+    ```
+    https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=yourkey
+    ```
+
+    ```
+    https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=yourkey
+    ```
+produces:
+  - application/json
+security:
+  - apikey: []
+paths:
+  '/emailed/{period}.json':
+    get:
+      summary: Most emailed articles on NYTimes.com.
+      description: |
+        Returns an array of the most emailed articles on NYTimes.com for specified period of time (1 day, 7 days, or 30 days).
+      parameters:
+        - name: period
+          in: path
+          description: 'Time period: 1, 7, or 30 days.'
+          required: true
+          type: integer
+          enum:
+            - 1
+            - 7
+            - 30
+          default: 1
+      tags:
+        - Most Popular
+      responses:
+        '200':
+          description: An array of articles.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/EmailedArticle'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+  '/shared/{period}.json':
+    get:
+      summary: Most shared articles on NYTimes.com.
+      description: |
+        Returns an array of the most shared articles on NYTimes.com for specified period of time (1 day, 7 days, or 30 days).
+      parameters:
+        - name: period
+          in: path
+          description: 'Time period: 1, 7, or 30 days.'
+          required: true
+          type: integer
+          enum:
+            - 1
+            - 7
+            - 30
+          default: 1
+      tags:
+        - Most Popular
+      responses:
+        '200':
+          description: An array of articles.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/SharedArticle'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+  '/shared/{period}/{share_type}.json':
+    get:
+      summary: Most shared articles on NYTimes.com of specified share type.
+      description: |
+        Returns an array of the most shared articles by share type on NYTimes.com for specified period of time (1 day, 7 days, or 30 days).
+      parameters:
+        - name: period
+          in: path
+          description: 'Time period: 1, 7, or 30 days.'
+          required: true
+          type: integer
+          enum:
+            - 1
+            - 7
+            - 30
+          default: 1
+        - name: share_type
+          in: path
+          description: 'Share type: email, facebook, or twitter.'
+          required: true
+          type: string
+          enum:
+            - email
+            - facebook
+            - twitter
+          default: facebook
+      tags:
+        - Most Popular
+      responses:
+        '200':
+          description: An array of articles.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/SharedArticle'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+  '/viewed/{period}.json':
+    get:
+      summary: Most viewed articles on NYTimes.com.
+      description: |
+        Returns an array of the most viewed articles on NYTimes.com for specified period of time (1 day, 7 days, or 30 days).
+      parameters:
+        - name: period
+          in: path
+          description: 'Time period: 1, 7, or 30 days.'
+          required: true
+          type: integer
+          enum:
+            - 1
+            - 7
+            - 30
+          default: 1
+      tags:
+        - Most Popular
+      responses:
+        '200':
+          description: An array of articles.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              copyright:
+                type: string
+              num_results:
+                type: integer
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/ViewedArticle'
+        '401':
+          description: Unauthorized request.  Make sure api-key is set.
+        '429':
+          description: Too many requests.  You reached your per minute or per day rate limit.
+definitions:
+  EmailedArticle:
+    type: object
+    properties:
+      url:
+        type: string
+      adx_keywords:
+        type: string
+      subsection:
+        type: string
+      email_count:
+        type: integer
+      count_type:
+        type: string
+      column:
+        type: string
+      eta_id:
+        type: integer
+      section:
+        type: string
+      id:
+        type: integer
+      asset_id:
+        type: integer
+      nytdsection:
+        type: string
+      byline:
+        type: string
+      type:
+        type: string
+      title:
+        type: string
+      abstract:
+        type: string
+      published_date:
+        type: string
+      source:
+        type: string
+      updated:
+        type: string
+      des_facet:
+        type: array
+        items:
+          type: string
+      org_facet:
+        type: array
+        items:
+          type: string
+      per_facet:
+        type: array
+        items:
+          type: string
+      geo_facet:
+        type: array
+        items:
+          type: string
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      uri:
+        type: string
+  Media:
+    type: object
+    properties:
+      type:
+        type: string
+      subtype:
+        type: string
+      caption:
+        type: string
+      copyright:
+        type: string
+      approved_for_syndication:
+        type: boolean
+      media-metadata:
+        type: array
+        items:
+          $ref: '#/definitions/MediaMetadata'
+  MediaMetadata:
+    type: object
+    properties:
+      url:
+        type: string
+      format:
+        type: string
+      height:
+        type: integer
+      width:
+        type: integer
+  SharedArticle:
+    type: object
+    properties:
+      url:
+        type: string
+      adx_keywords:
+        type: string
+      subsection:
+        type: string
+      share_count:
+        type: integer
+      count_type:
+        type: string
+      column:
+        type: string
+      eta_id:
+        type: integer
+      section:
+        type: string
+      id:
+        type: integer
+      asset_id:
+        type: integer
+      nytdsection:
+        type: string
+      byline:
+        type: string
+      type:
+        type: string
+      title:
+        type: string
+      abstract:
+        type: string
+      published_date:
+        type: string
+      source:
+        type: string
+      updated:
+        type: string
+      des_facet:
+        type: array
+        items:
+          type: string
+      org_facet:
+        type: array
+        items:
+          type: string
+      per_facet:
+        type: array
+        items:
+          type: string
+      geo_facet:
+        type: array
+        items:
+          type: string
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      uri:
+        type: string
+  ViewedArticle:
+    type: object
+    properties:
+      url:
+        type: string
+      adx_keywords:
+        type: string
+      column:
+        type: string
+      section:
+        type: string
+      byline:
+        type: string
+      type:
+        type: string
+      title:
+        type: string
+      abstract:
+        type: string
+      published_date:
+        type: string
+      source:
+        type: string
+      id:
+        type: integer
+      asset_id:
+        type: integer
+      views:
+        type: integer
+      des_facet:
+        type: array
+        items:
+          type: string
+      org_facet:
+        type: array
+        items:
+          type: string
+      per_facet:
+        type: array
+        items:
+          type: string
+      geo_facet:
+        type: array
+        items:
+          type: string
+      media:
+        type: array
+        items:
+          $ref: '#/definitions/Media'
+      uri:
+        type: string
+securityDefinitions:
+  apikey:
+    type: apiKey
+    name: api-key
+    in: query
